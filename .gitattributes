@@ -1,2 +1,4 @@
 *.bin filter=lfs diff=lfs merge=lfs -text
 *.pt filter=lfs diff=lfs merge=lfs -text
+pretrained_models/reid/*.pth filter=lfs diff=lfs merge=lfs -text
+pretrained_models/yolo/*.pt filter=lfs diff=lfs merge=lfs -text
