@@ -1,31 +1,266 @@
-/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/albumentations/__init__.py:13: UserWarning: A new version of Albumentations is available: 1.4.20 (you have 1.4.17). Upgrade using: pip install -U albumentations. To disable automatic update checks, set the environment variable NO_ALBUMENTATIONS_UPDATE to 1.
-  check_for_updates()
-2024-10-28 20:54:20,793 - mmocr.datasets.nested_ocr_dataset - INFO - Checkpoint not found. Running conversion...
 Traceback (most recent call last):
-  File "/home/zw4603/soccernet/mmocr/tools/train.py", line 114, in <module>
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/yapf/pytree/pytree_utils.py", line 113, in ParseCodeToTree
+    tree = parser_driver.parse_string(code, debug=False)
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/yapf_third_party/_ylib2to3/pgen2/driver.py", line 188, in parse_string
+    return self.parse_tokens(tokens, debug)
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/yapf_third_party/_ylib2to3/pgen2/driver.py", line 157, in parse_tokens
+    if p.addtoken(type, value, (prefix, start)):
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/yapf_third_party/_ylib2to3/pgen2/parse.py", line 230, in addtoken
+    return self._addtoken(ilabel, type, value, context)
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/yapf_third_party/_ylib2to3/pgen2/parse.py", line 313, in _addtoken
+    raise ParseError('bad input', type, value, context)
+yapf_third_party._ylib2to3.pgen2.parse.ParseError: bad input: type=20, value='<', context=('', (147, 35))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/yapf/yapflib/yapf_api.py", line 198, in FormatCode
+    tree = pytree_utils.ParseCodeToTree(unformatted_source)
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/yapf/pytree/pytree_utils.py", line 116, in ParseCodeToTree
+    ast.parse(code)
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/ast.py", line 50, in parse
+    return compile(source, filename, mode, flags,
+  File "<unknown>", line 147
+    train_dataloader=functools.partial(<class 'torch.utils.data.dataloader.DataLoader'>, collate_fn=<function custom_collate_fn at 0x1462a0a11f30>, batch_size=16, num_workers=4, persistent_workers=True, sampler={'type': 'DefaultSampler', 'shuffle': True}, dataset={'type': 'NestedOCRDataset', 'root_dir': '/vast/zw4603/data/SoccerNetGS/train'})
+                                       ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/config/config.py", line 1483, in pretty_text
+    text, _ = FormatCode(text, style_config=yapf_style)
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/yapf/yapflib/yapf_api.py", line 201, in FormatCode
+    raise errors.YapfError(errors.FormatErrorMsg(e))
+yapf.yapflib.errors.YapfError: <unknown>:147:36: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/zw4603/soccernet/mmocr/tools/train.py", line 129, in <module>
     main()
-  File "/home/zw4603/soccernet/mmocr/tools/train.py", line 110, in main
-    runner.train()
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/runner.py", line 1728, in train
-    self._train_loop = self.build_train_loop(
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/runner.py", line 1520, in build_train_loop
-    loop = LOOPS.build(
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/registry/registry.py", line 570, in build
-    return self.build_func(cfg, *args, **kwargs, registry=self)
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/registry/build_functions.py", line 121, in build_from_cfg
-    obj = obj_cls(**args)  # type: ignore
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/loops.py", line 46, in __init__
-    super().__init__(runner, dataloader)
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/base_loop.py", line 26, in __init__
-    self.dataloader = runner.build_dataloader(
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/runner.py", line 1370, in build_dataloader
-    dataset = DATASETS.build(dataset_cfg)
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/registry/registry.py", line 570, in build
-    return self.build_func(cfg, *args, **kwargs, registry=self)
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/registry/build_functions.py", line 121, in build_from_cfg
-    obj = obj_cls(**args)  # type: ignore
-  File "/home/zw4603/soccernet/mmocr/mmocr/datasets/nested_ocr_dataset.py", line 29, in __init__
-    self.save_checkpoint(checkpoint_path)
-  File "/home/zw4603/soccernet/mmocr/mmocr/datasets/nested_ocr_dataset.py", line 83, in save_checkpoint
-    with open(checkpoint_path, 'w') as f:
-FileNotFoundError: [Errno 2] No such file or directory: '/home/zw4603/soccernet/mmocr/converted_dataset/MMOCR_format_dataset.json'
+  File "/home/zw4603/soccernet/mmocr/tools/train.py", line 117, in main
+    runner = Runner.from_cfg(cfg)
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/runner.py", line 462, in from_cfg
+    runner = cls(
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/runner.py", line 403, in __init__
+    self._log_env(env_cfg)
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/runner.py", line 2388, in _log_env
+    self.logger.info(f'Config:\n{self.cfg.pretty_text}')
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/config/config.py", line 1488, in pretty_text
+    raise SyntaxError('Failed to format the config file, please '
+SyntaxError: Failed to format the config file, please check the syntax of: 
+auto_scale_lr=dict(
+    base_batch_size=16)
+default_hooks=dict(
+    checkpoint=dict(
+        interval=20,
+        type='CheckpointHook'),
+    logger=dict(
+        interval=5,
+        type='LoggerHook'),
+    param_scheduler=dict(
+        type='ParamSchedulerHook'),
+    sampler_seed=dict(
+        type='DistSamplerSeedHook'),
+    sync_buffer=dict(
+        type='SyncBuffersHook'),
+    timer=dict(
+        type='IterTimerHook'),
+    visualization=dict(
+        draw_gt=True,
+        draw_pred=True,
+        enable=True,
+        interval=1,
+        show=False,
+        type='VisualizationHook'))
+default_scope='mmocr'
+env_cfg=dict(
+    cudnn_benchmark=False,
+    dist_cfg=dict(
+        backend='nccl'),
+    mp_cfg=dict(
+        mp_start_method='fork',
+        opencv_num_threads=0))
+launcher='none'
+load_from=None
+log_level='INFO'
+log_processor=dict(
+    by_epoch=True,
+    type='LogProcessor',
+    window_size=10)
+model=dict(
+    backbone=dict(
+        depth=18,
+        frozen_stages=-1,
+        init_cfg=dict(
+            checkpoint='torchvision://resnet18',
+            type='Pretrained'),
+        norm_cfg=dict(
+            requires_grad=True,
+            type='BN'),
+        norm_eval=False,
+        num_stages=4,
+        out_indices=(
+            0,
+            1,
+            2,
+            3,
+            ),
+        style='caffe',
+        type='mmdet.ResNet'),
+    data_preprocessor=dict(
+        bgr_to_rgb=True,
+        mean=[
+            123.675,
+            116.28,
+            103.53,
+            ],
+        pad_size_divisor=32,
+        std=[
+            58.395,
+            57.12,
+            57.375,
+            ],
+        type='TextDetDataPreprocessor'),
+    det_head=dict(
+        in_channels=256,
+        module_loss=dict(
+            type='DBModuleLoss'),
+        postprocessor=dict(
+            text_repr_type='quad',
+            type='DBPostprocessor'),
+        type='DBHead'),
+    neck=dict(
+        in_channels=[
+            64,
+            128,
+            256,
+            512,
+            ],
+        lateral_channels=256,
+        type='FPNC'),
+    type='DBNet')
+optim_wrapper=dict(
+    optimizer=dict(
+        lr=0.007,
+        momentum=0.9,
+        type='SGD',
+        weight_decay=0.0001),
+    type='OptimWrapper')
+param_scheduler=[
+    dict(end=1200,
+        eta_min=1e-07,
+        power=0.9,
+        type='PolyLR'),
+    ]
+randomness=dict(
+    seed=None)
+resume=False
+test_cfg=dict(
+    type='TestLoop')
+test_dataloader=dict(
+    batch_size=1,
+    dataset=dict(
+        root_dir='/vast/zw4603/data/SoccerNetGS/valid',
+        type='NestedOCRDataset'),
+    num_workers=4,
+    persistent_workers=True,
+    sampler=dict(
+        shuffle=False,
+        type='DefaultSampler'))
+test_evaluator=dict(
+    type='HmeanIOUMetric')
+test_pipeline=[
+    dict(color_type='color_ignore_orientation',
+        type='LoadImageFromFile'),
+    dict(keep_ratio=True,
+        scale=(
+            1333,
+            736,
+            ),
+        type='Resize'),
+    dict(type='LoadOCRAnnotations',
+        with_bbox=True,
+        with_label=True,
+        with_polygon=True),
+    dict(meta_keys=(
+            'img_path',
+            'ori_shape',
+            'img_shape',
+            'scale_factor',
+            ),
+        type='PackTextDetInputs'),
+    ]
+train_cfg=dict(
+    max_epochs=1200,
+    type='EpochBasedTrainLoop',
+    val_interval=20)
+train_dataloader=functools.partial(<class 'torch.utils.data.dataloader.DataLoader'>, collate_fn=<function custom_collate_fn at 0x1462a0a11f30>, batch_size=16, num_workers=4, persistent_workers=True, sampler={'type': 'DefaultSampler', 'shuffle': True}, dataset={'type': 'NestedOCRDataset', 'root_dir': '/vast/zw4603/data/SoccerNetGS/train'})
+train_pipeline=[
+    dict(color_type='color_ignore_orientation',
+        type='LoadImageFromFile'),
+    dict(type='LoadOCRAnnotations',
+        with_bbox=True,
+        with_label=True,
+        with_polygon=True),
+    dict(brightness=0.12549019607843137,
+        op='ColorJitter',
+        saturation=0.5,
+        type='TorchVisionWrapper'),
+    dict(args=[
+            [
+                    'Fliplr',
+                    0.5,
+                    ],
+            dict(cls='Affine',
+                rotate=[
+                    -10,
+                    10,
+                    ]),
+            [
+                    'Resize',
+                    [
+                            0.5,
+                            3.0,
+                            ],
+                    ],
+            ],
+        type='ImgAugWrapper'),
+    dict(min_side_ratio=0.1,
+        type='RandomCrop'),
+    dict(keep_ratio=True,
+        scale=(
+            640,
+            640,
+            ),
+        type='Resize'),
+    dict(size=(
+            640,
+            640,
+            ),
+        type='Pad'),
+    dict(meta_keys=(
+            'img_path',
+            'ori_shape',
+            'img_shape',
+            ),
+        type='PackTextDetInputs'),
+    ]
+val_cfg=dict(
+    type='ValLoop')
+val_dataloader=functools.partial(<class 'torch.utils.data.dataloader.DataLoader'>, collate_fn=<function custom_collate_fn at 0x1462a0a11f30>, batch_size=1, num_workers=4, persistent_workers=True, sampler={'type': 'DefaultSampler', 'shuffle': False}, dataset={'type': 'NestedOCRDataset', 'root_dir': '/vast/zw4603/data/SoccerNetGS/valid'})
+val_evaluator=dict(
+    type='HmeanIOUMetric')
+vis_backends=[
+    dict(save_dir='/vast/zw4603/mmocr/tensorboard_logs',
+        type='TensorboardVisBackend'),
+    ]
+visualizer=dict(
+    name='visualizer',
+    type='TextDetLocalVisualizer',
+    vis_backends=[
+        dict(save_dir='/vast/zw4603/mmocr/tensorboard_logs',
+            type='TensorboardVisBackend'),
+        ])
+work_dir='/vast/zw4603/mmocr/dbnet/'

@@ -1,0 +1,192 @@
+absl-py==2.1.0
+addict==2.4.0
+aiohappyeyeballs==2.4.3
+aiohttp==3.10.8
+aiosignal==1.3.1
+alabaster==0.7.16
+albucore==0.0.17
+albumentations==1.4.17
+annotated-types==0.7.0
+antlr4-python3-runtime==4.9.3
+async-timeout==4.0.3
+attrs==24.2.0
+babel==2.16.0
+beautifulsoup4==4.12.3
+Brotli @ file:///croot/brotli-split_1714483155106/work
+certifi @ file:///croot/certifi_1725551672989/work/certifi
+charset-normalizer @ file:///croot/charset-normalizer_1721748349566/work
+chumpy==0.66
+click==8.1.7
+colorama==0.4.6
+contourpy==1.3.0
+cycler==0.12.1
+Cython==3.0.11
+deepdiff==8.0.1
+docker-pycreds==0.4.0
+docutils==0.20.1
+easyocr==1.7.2
+eval_type_backport==0.2.0
+exceptiongroup==1.2.2
+filelock==3.16.1
+filterpy==1.4.5
+flake8==7.1.1
+fonttools==4.54.1
+frozenlist==1.4.1
+fsspec==2024.9.0
+future==1.0.0
+gdown==4.7.3
+git-filter-repo==2.45.0
+gitdb==4.0.11
+GitPython==3.1.43
+google-measurement-protocol==1.1.0
+grpcio==1.66.2
+h5py==3.12.1
+huggingface-hub==0.25.1
+hydra-core==1.3.2
+idna @ file:///croot/idna_1714398848350/work
+imageio==2.35.1
+imagesize==1.4.1
+imgaug==0.4.0
+importlib_metadata==8.5.0
+iniconfig==2.0.0
+isort==5.13.2
+Jinja2==3.1.4
+joblib==1.4.2
+json-tricks==3.17.3
+kiwisolver==1.4.7
+kornia==0.6.3
+lap @ git+https://github.com/TrackingLaboratory/lap@6ec997bc248656e9e5247532bdb8e80e13038004
+lazy_loader==0.4
+lightning==2.2.5
+lightning-utilities==0.11.7
+llvmlite==0.43.0
+lmdb==1.5.1
+lsq-ellipse==2.2.1
+Markdown==3.7
+markdown-it-py==3.0.0
+MarkupSafe==2.1.5
+matplotlib==3.8.4
+mccabe==0.7.0
+mdit-py-plugins==0.4.2
+mdurl==0.1.2
+mkl-service==2.4.0
+mkl_fft @ file:///croot/mkl_fft_1725370245198/work
+mkl_random @ file:///croot/mkl_random_1725370241878/work
+mmcv==2.0.1
+mmdet==3.1.0
+mmengine==0.10.5
+-e git+https://github.com/zwanggd/soccernet.git@29ab6a89b4d1cbbb748cd0d8220f4f99a0edb597#egg=mmocr&subdirectory=mmocr
+mmpose==1.3.2
+model-index==0.1.11
+monai==1.3.2
+motmetrics==1.4.0
+multidict==6.1.0
+munkres==1.1.4
+mutagen==1.47.0
+myst-parser==2.0.0
+networkx==3.3
+ninja==1.11.1.1
+numba==0.60.0
+numpy==1.26.4
+omegaconf==2.3.0
+opencv-python==4.10.0.84
+opencv-python-headless==4.10.0.84
+opendatalab==0.0.10
+openmim==0.3.9
+openxlab==0.0.11
+ordered-set==4.1.0
+orderly-set==5.2.2
+packaging==24.1
+pandas==2.2.3
+pillow @ file:///croot/pillow_1721059439630/work
+platformdirs==4.3.6
+pluggy==1.5.0
+posetrack21 @ file:///home/zw4603/soccernet/tracklab/plugins/eval/PoseTrack21/posetrack21
+posetrack21_mot @ file:///home/zw4603/soccernet/tracklab/plugins/eval/PoseTrack21/posetrack21_mot
+poseval @ git+https://github.com/TrackingLaboratory/poseval@0df5b1d1653e9f4dfb64f3a8a5f36375792e5d21
+prices==1.1.1
+protobuf==5.28.2
+prtreid @ git+https://github.com/VlSomers/prtreid@eef6ee60dab1c80c59c0c46caabd41ffc36d8560
+psutil==6.0.0
+pushbullet.py==0.12.0
+pyclipper==1.3.0.post5
+pycocoevalcap==1.2
+pycocotools==2.0.8
+pycodestyle==2.12.1
+pycryptodome==3.21.0
+pycryptodomex==3.21.0
+pydantic==2.9.2
+pydantic_core==2.23.4
+pyflakes==3.2.0
+Pygments==2.18.0
+pyparsing==3.1.4
+PySocks @ file:///home/builder/ci_310/pysocks_1640793678128/work
+pytest==8.3.3
+python-bidi==0.6.0
+python-dateutil==2.9.0.post0
+python-magic==0.4.27
+pytorch-lightning==2.2.5
+pytz==2024.2
+PyYAML==6.0.2
+RapidFuzz==3.10.0
+requests @ file:///croot/requests_1721410876868/work
+rich==13.9.1
+safetensors==0.4.5
+scikit-image==0.24.0
+scikit-learn==1.5.2
+scikit-video==1.1.11
+scipy==1.14.1
+seaborn==0.13.2
+sentry-sdk==2.15.0
+setproctitle==1.3.3
+shapely==2.0.6
+six==1.16.0
+smmap==5.0.1
+-e git+https://github.com/zwanggd/soccernet.git@29ab6a89b4d1cbbb748cd0d8220f4f99a0edb597#egg=sn_gamestate&subdirectory=sn-gamestate
+sn-trackeval==0.4.0
+snowballstemmer==2.2.0
+SoccerNet==0.1.60
+soupsieve==2.6
+sparse==0.15.4
+Sphinx==7.4.7
+sphinx-rtd-theme==2.0.0
+sphinxcontrib-applehelp==2.0.0
+sphinxcontrib-devhelp==2.0.0
+sphinxcontrib-htmlhelp==2.1.0
+sphinxcontrib-jquery==4.1
+sphinxcontrib-jsmath==1.0.1
+sphinxcontrib-qthelp==2.0.0
+sphinxcontrib-serializinghtml==2.0.0
+tabulate==0.9.0
+tb-nightly==2.19.0a20241002
+tensorboard-data-server==0.7.2
+termcolor==2.4.0
+terminaltables==3.1.10
+thop==0.1.1.post2209072238
+threadpoolctl==3.5.0
+tifffile==2024.9.20
+timm==0.9.16
+tomli==2.0.2
+torch==1.13.1
+torchmetrics==0.10.3
+torchreid @ git+https://github.com/VlSomers/bpbreid@02570d5c893977685de7a547a58c0aa87fa4788c
+torchvision==0.14.1
+tqdm==4.66.5
+track-bench-track @ file:///home/zw4603/soccernet/tracklab/plugins/track
+tracklab @ file:///home/zw4603/soccernet/tracklab
+tracklab-calibration @ file:///home/zw4603/soccernet/sn-gamestate/plugins/calibration
+typing_extensions @ file:///croot/typing_extensions_1715268824938/work
+tzdata==2024.2
+ultralytics==8.0.100
+urllib3 @ file:///croot/urllib3_1727769808118/work
+wandb==0.18.3
+websocket-client==1.8.0
+websockets==13.1
+Werkzeug==3.0.4
+xmltodict==0.13.0
+xtcocotools==1.14.3
+yacs==0.1.8
+yapf==0.40.2
+yarl==1.13.1
+yt-dlp==2024.9.27
+zipp==3.20.2
