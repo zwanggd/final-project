@@ -19,4 +19,8 @@ conda activate tracklab  # replace with your conda environment name
 cd /home/zw4603/soccernet/mmocr
 
 # Run the training command
-python tools/train.py configs/textdet/dbnet/dbnet_resnet18_fpnc_1200e_icdar2015.py --work-dir work_dirs/dbnet/
+
+python tools/train.py configs/textdet/dbnet/dbnet_resnet18_fpnc_1200e_icdar2015.py --work-dir /vast/zw4603/mmocr/dbnet/
+
+cd /home/zw4603/soccernet/
+python push_notification.py

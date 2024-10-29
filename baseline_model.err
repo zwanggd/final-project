@@ -1,30 +1,31 @@
 /vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/albumentations/__init__.py:13: UserWarning: A new version of Albumentations is available: 1.4.20 (you have 1.4.17). Upgrade using: pip install -U albumentations. To disable automatic update checks, set the environment variable NO_ALBUMENTATIONS_UPDATE to 1.
   check_for_updates()
+2024-10-28 20:54:20,793 - mmocr.datasets.nested_ocr_dataset - INFO - Checkpoint not found. Running conversion...
 Traceback (most recent call last):
   File "/home/zw4603/soccernet/mmocr/tools/train.py", line 114, in <module>
     main()
   File "/home/zw4603/soccernet/mmocr/tools/train.py", line 110, in main
     runner.train()
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/runner.py", line 1777, in train
-    model = self.train_loop.run()  # type: ignore
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/loops.py", line 98, in run
-    self.run_epoch()
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/loops.py", line 114, in run_epoch
-    for idx, data_batch in enumerate(self.dataloader):
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 430, in __iter__
-    self._iterator = self._get_iterator()
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 381, in _get_iterator
-    return _MultiProcessingDataLoaderIter(self)
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1072, in __init__
-    self._reset(loader, first_iter=True)
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1105, in _reset
-    self._try_put_index()
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1339, in _try_put_index
-    index = self._next_index()
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 618, in _next_index
-    return next(self._sampler_iter)  # may raise StopIteration
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/torch/utils/data/sampler.py", line 254, in __iter__
-    for idx in self.sampler:
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/dataset/sampler.py", line 82, in __iter__
-    int(self.total_size / len(indices) + 1))[:self.total_size]
-ZeroDivisionError: division by zero
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/runner.py", line 1728, in train
+    self._train_loop = self.build_train_loop(
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/runner.py", line 1520, in build_train_loop
+    loop = LOOPS.build(
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/registry/registry.py", line 570, in build
+    return self.build_func(cfg, *args, **kwargs, registry=self)
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/registry/build_functions.py", line 121, in build_from_cfg
+    obj = obj_cls(**args)  # type: ignore
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/loops.py", line 46, in __init__
+    super().__init__(runner, dataloader)
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/base_loop.py", line 26, in __init__
+    self.dataloader = runner.build_dataloader(
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/runner.py", line 1370, in build_dataloader
+    dataset = DATASETS.build(dataset_cfg)
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/registry/registry.py", line 570, in build
+    return self.build_func(cfg, *args, **kwargs, registry=self)
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/registry/build_functions.py", line 121, in build_from_cfg
+    obj = obj_cls(**args)  # type: ignore
+  File "/home/zw4603/soccernet/mmocr/mmocr/datasets/nested_ocr_dataset.py", line 29, in __init__
+    self.save_checkpoint(checkpoint_path)
+  File "/home/zw4603/soccernet/mmocr/mmocr/datasets/nested_ocr_dataset.py", line 83, in save_checkpoint
+    with open(checkpoint_path, 'w') as f:
+FileNotFoundError: [Errno 2] No such file or directory: '/home/zw4603/soccernet/mmocr/converted_dataset/MMOCR_format_dataset.json'

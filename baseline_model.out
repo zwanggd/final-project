@@ -1,11 +1,11 @@
-10/24 20:41:52 - mmengine - INFO - 
+10/28 20:54:04 - mmengine - INFO - 
 ------------------------------------------------------------
 System environment:
     sys.platform: linux
     Python: 3.10.14 (main, May  6 2024, 19:42:50) [GCC 11.2.0]
     CUDA available: True
     MUSA available: False
-    numpy_random_seed: 164728443
+    numpy_random_seed: 381287947
     GPU 0: Quadro RTX 8000
     CUDA_HOME: /usr/local/cuda
     NVCC: Cuda compilation tools, release 12.2, V12.2.140
@@ -34,13 +34,13 @@ Runtime environment:
     cudnn_benchmark: False
     mp_cfg: {'mp_start_method': 'fork', 'opencv_num_threads': 0}
     dist_cfg: {'backend': 'nccl'}
-    seed: 164728443
+    seed: 381287947
     Distributed launcher: none
     Distributed training: False
     GPU number: 1
 ------------------------------------------------------------
 
-10/24 20:41:52 - mmengine - INFO - Config:
+10/28 20:54:04 - mmengine - INFO - Config:
 auto_scale_lr = dict(base_batch_size=16)
 default_hooks = dict(
     checkpoint=dict(interval=20, type='CheckpointHook'),
@@ -50,9 +50,9 @@ default_hooks = dict(
     sync_buffer=dict(type='SyncBuffersHook'),
     timer=dict(type='IterTimerHook'),
     visualization=dict(
-        draw_gt=False,
-        draw_pred=False,
-        enable=False,
+        draw_gt=True,
+        draw_pred=True,
+        enable=True,
         interval=1,
         show=False,
         type='VisualizationHook'))
@@ -214,18 +214,22 @@ val_dataloader = dict(
     sampler=dict(shuffle=False, type='DefaultSampler'))
 val_evaluator = dict(type='HmeanIOUMetric')
 vis_backends = [
-    dict(type='LocalVisBackend'),
+    dict(
+        save_dir='/vast/zw4603/mmocr/tensorboard_logs',
+        type='TensorboardVisBackend'),
 ]
 visualizer = dict(
     name='visualizer',
     type='TextDetLocalVisualizer',
     vis_backends=[
-        dict(type='LocalVisBackend'),
+        dict(
+            save_dir='/vast/zw4603/mmocr/tensorboard_logs',
+            type='TensorboardVisBackend'),
     ])
-work_dir = 'work_dirs/dbnet/'
+work_dir = '/vast/zw4603/mmocr/dbnet/'
 
-10/24 20:41:56 - mmengine - INFO - Distributed training is not used, all SyncBatchNorm (SyncBN) layers in the model will be automatically reverted to BatchNormXd layers if they are used.
-10/24 20:41:56 - mmengine - INFO - Hooks will be executed in the following order:
+10/28 20:54:20 - mmengine - INFO - Distributed training is not used, all SyncBatchNorm (SyncBN) layers in the model will be automatically reverted to BatchNormXd layers if they are used.
+10/28 20:54:20 - mmengine - INFO - Hooks will be executed in the following order:
 before_run:
 (VERY_HIGH   ) RuntimeInfoHook                    
 (BELOW_NORMAL) LoggerHook                         
@@ -311,14 +315,3 @@ after_test:
 after_run:
 (BELOW_NORMAL) LoggerHook                         
  -------------------- 
-10/24 20:41:57 - mmengine - WARNING - Dataset NestedOCRDataset has no metainfo. ``dataset_meta`` in visualizer will be None.
-10/24 20:41:59 - mmengine - WARNING - Dataset NestedOCRDataset has no metainfo. ``dataset_meta`` in evaluator, metric and visualizer will be None.
-10/24 20:41:59 - mmengine - INFO - load model from: torchvision://resnet18
-10/24 20:41:59 - mmengine - INFO - Loads checkpoint by torchvision backend from path: torchvision://resnet18
-10/24 20:42:00 - mmengine - WARNING - The model and loaded state dict do not match exactly
-
-unexpected key in source state_dict: fc.weight, fc.bias
-
-10/24 20:42:00 - mmengine - WARNING - "FileClient" will be deprecated in future. Please use io functions in https://mmengine.readthedocs.io/en/latest/api/fileio.html#file-io
-10/24 20:42:00 - mmengine - WARNING - "HardDiskBackend" is the alias of "LocalBackend" and the former will be deprecated in future.
-10/24 20:42:00 - mmengine - INFO - Checkpoints will be saved to /home/zw4603/soccernet/mmocr/work_dirs/dbnet.
