@@ -14,6 +14,16 @@ from mmocr.utils import offset_polygon
 from mmocr.utils.typing_utils import ArrayLike
 from .seg_based_module_loss import SegBasedModuleLoss
 
+import logging
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[logging.StreamHandler()]
+)
+
+log = logging.getLogger(__name__)
 
 @MODELS.register_module()
 class DBModuleLoss(SegBasedModuleLoss):
@@ -105,6 +115,8 @@ class DBModuleLoss(SegBasedModuleLoss):
         Returns:
             bool: Whether the polygon is invalid.
         """
+        poly = poly.cpu().numpy()
+
         poly = poly.reshape(-1, 2)
         area = Polygon(poly).area
         if abs(area) < 1:
@@ -235,6 +247,8 @@ class DBModuleLoss(SegBasedModuleLoss):
         """
 
         gt_instances = data_sample.gt_instances
+        log.info(f'data instance: {gt_instances}')
+
         ignore_flags = gt_instances.ignored
         for idx, polygon in enumerate(gt_instances.polygons):
             if self._is_poly_invalid(polygon):

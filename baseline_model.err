@@ -1,266 +1,172 @@
+/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/albumentations/__init__.py:13: UserWarning: A new version of Albumentations is available: 1.4.20 (you have 1.4.17). Upgrade using: pip install -U albumentations. To disable automatic update checks, set the environment variable NO_ALBUMENTATIONS_UPDATE to 1.
+  check_for_updates()
+2024-10-30 10:05:50,419 - mmocr.datasets.nested_ocr_dataset - INFO - Loading train dataset from checkpoint in /vast/zw4603/mmocr/converted_dataset/train_dataset.json
+2024-10-30 10:05:58,210 - mmocr.datasets.nested_ocr_dataset - INFO - Train dataset loaded from checkpoint.
+2024-10-30 10:05:58,213 - mmocr.datasets.nested_ocr_dataset - INFO - Loading valid dataset from checkpoint in /vast/zw4603/mmocr/converted_dataset/valid_dataset.json
+2024-10-30 10:06:06,936 - mmocr.datasets.nested_ocr_dataset - INFO - Valid dataset loaded from checkpoint.
+2024-10-30 10:06:08,758 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 15683
+2024-10-30 10:06:08,758 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 28632
+2024-10-30 10:06:08,758 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 39344
+2024-10-30 10:06:08,758 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 15727
+2024-10-30 10:06:08,758 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 37151
+2024-10-30 10:06:08,758 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 38406
+2024-10-30 10:06:08,758 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 32791
+2024-10-30 10:06:08,758 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 42038
+2024-10-30 10:06:08,758 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 41086
+2024-10-30 10:06:08,758 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 36997
+2024-10-30 10:06:08,759 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 13006
+2024-10-30 10:06:08,759 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 957
+2024-10-30 10:06:08,759 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 17542
+2024-10-30 10:06:08,759 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 42721
+2024-10-30 10:06:08,759 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 21232
+2024-10-30 10:06:08,759 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 38299
+2024-10-30 10:06:08,798 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 6515
+2024-10-30 10:06:08,798 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 35597
+2024-10-30 10:06:08,798 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 8435
+2024-10-30 10:06:08,798 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 37664
+2024-10-30 10:06:08,798 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 35653
+2024-10-30 10:06:08,798 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 5344
+2024-10-30 10:06:08,798 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 882
+2024-10-30 10:06:08,799 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 21345
+2024-10-30 10:06:08,799 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 41268
+2024-10-30 10:06:08,799 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 23439
+2024-10-30 10:06:08,799 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 7795
+2024-10-30 10:06:08,799 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 8218
+2024-10-30 10:06:08,799 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 22794
+2024-10-30 10:06:08,799 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 41327
+2024-10-30 10:06:08,799 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 27233
+2024-10-30 10:06:08,799 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 37037
+2024-10-30 10:06:08,802 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 23808
+2024-10-30 10:06:08,802 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 26271
+2024-10-30 10:06:08,802 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 16360
+2024-10-30 10:06:08,802 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 24857
+2024-10-30 10:06:08,802 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 9914
+2024-10-30 10:06:08,802 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 33131
+2024-10-30 10:06:08,802 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 27237
+2024-10-30 10:06:08,802 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 28761
+2024-10-30 10:06:08,803 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 34690
+2024-10-30 10:06:08,803 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 32704
+2024-10-30 10:06:08,803 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 40599
+2024-10-30 10:06:08,803 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 33690
+2024-10-30 10:06:08,803 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 25087
+2024-10-30 10:06:08,803 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 41117
+2024-10-30 10:06:08,803 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 5196
+2024-10-30 10:06:08,803 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 41080
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 25881
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 1023
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 12973
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 22132
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 1328
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 21894
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 32222
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 14147
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 23565
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 2534
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 33937
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 30805
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 2527
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 10090
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 34849
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 9416
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 13523
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 33504
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 21600
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 10848
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 38471
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 7408
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 21299
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 11862
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 5569
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 8287
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 14026
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 29575
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 3657
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 17382
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 17700
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 11609
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 30650
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 31061
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 30630
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 7029
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 29053
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 6976
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 23153
+2024-10-30 10:06:08,806 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 40280
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 14987
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 24929
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 22034
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 12886
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 28378
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 2371
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 30448
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 4207
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 18836
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 4209
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 11083
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 11281
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 32266
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 34741
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 11433
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 4667
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 1740
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 21624
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 41361
+2024-10-30 10:06:08,807 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 15368
+2024-10-30 10:06:08,808 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 24599
+2024-10-30 10:06:08,808 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 33022
+2024-10-30 10:06:08,808 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 10607
+2024-10-30 10:06:08,808 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 38878
+2024-10-30 10:06:08,808 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 8405
+2024-10-30 10:06:08,808 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 22356
+2024-10-30 10:06:08,808 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 10620
+2024-10-30 10:06:08,809 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 18755
+2024-10-30 10:06:08,809 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 17508
+2024-10-30 10:06:08,809 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 1773
+2024-10-30 10:06:08,809 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 24254
+2024-10-30 10:06:08,809 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 38648
+2024-10-30 10:06:08,809 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 5836
+2024-10-30 10:06:08,809 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 16843
+2024-10-30 10:06:08,809 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 36518
+2024-10-30 10:06:08,809 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 3101
+2024-10-30 10:06:08,809 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 28913
+2024-10-30 10:06:08,809 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 19270
+2024-10-30 10:06:08,809 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 40813
+2024-10-30 10:06:08,809 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 19305
 Traceback (most recent call last):
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/yapf/pytree/pytree_utils.py", line 113, in ParseCodeToTree
-    tree = parser_driver.parse_string(code, debug=False)
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/yapf_third_party/_ylib2to3/pgen2/driver.py", line 188, in parse_string
-    return self.parse_tokens(tokens, debug)
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/yapf_third_party/_ylib2to3/pgen2/driver.py", line 157, in parse_tokens
-    if p.addtoken(type, value, (prefix, start)):
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/yapf_third_party/_ylib2to3/pgen2/parse.py", line 230, in addtoken
-    return self._addtoken(ilabel, type, value, context)
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/yapf_third_party/_ylib2to3/pgen2/parse.py", line 313, in _addtoken
-    raise ParseError('bad input', type, value, context)
-yapf_third_party._ylib2to3.pgen2.parse.ParseError: bad input: type=20, value='<', context=('', (147, 35))
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/yapf/yapflib/yapf_api.py", line 198, in FormatCode
-    tree = pytree_utils.ParseCodeToTree(unformatted_source)
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/yapf/pytree/pytree_utils.py", line 116, in ParseCodeToTree
-    ast.parse(code)
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/ast.py", line 50, in parse
-    return compile(source, filename, mode, flags,
-  File "<unknown>", line 147
-    train_dataloader=functools.partial(<class 'torch.utils.data.dataloader.DataLoader'>, collate_fn=<function custom_collate_fn at 0x1462a0a11f30>, batch_size=16, num_workers=4, persistent_workers=True, sampler={'type': 'DefaultSampler', 'shuffle': True}, dataset={'type': 'NestedOCRDataset', 'root_dir': '/vast/zw4603/data/SoccerNetGS/train'})
-                                       ^
-SyntaxError: invalid syntax
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/config/config.py", line 1483, in pretty_text
-    text, _ = FormatCode(text, style_config=yapf_style)
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/yapf/yapflib/yapf_api.py", line 201, in FormatCode
-    raise errors.YapfError(errors.FormatErrorMsg(e))
-yapf.yapflib.errors.YapfError: <unknown>:147:36: invalid syntax
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/home/zw4603/soccernet/mmocr/tools/train.py", line 129, in <module>
+2024-10-30 10:06:08,810 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 36115
+  File "/home/zw4603/soccernet/mmocr/tools/train.py", line 113, in <module>
+2024-10-30 10:06:08,810 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 29027
     main()
-  File "/home/zw4603/soccernet/mmocr/tools/train.py", line 117, in main
-    runner = Runner.from_cfg(cfg)
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/runner.py", line 462, in from_cfg
-    runner = cls(
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/runner.py", line 403, in __init__
-    self._log_env(env_cfg)
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/runner.py", line 2388, in _log_env
-    self.logger.info(f'Config:\n{self.cfg.pretty_text}')
-  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/config/config.py", line 1488, in pretty_text
-    raise SyntaxError('Failed to format the config file, please '
-SyntaxError: Failed to format the config file, please check the syntax of: 
-auto_scale_lr=dict(
-    base_batch_size=16)
-default_hooks=dict(
-    checkpoint=dict(
-        interval=20,
-        type='CheckpointHook'),
-    logger=dict(
-        interval=5,
-        type='LoggerHook'),
-    param_scheduler=dict(
-        type='ParamSchedulerHook'),
-    sampler_seed=dict(
-        type='DistSamplerSeedHook'),
-    sync_buffer=dict(
-        type='SyncBuffersHook'),
-    timer=dict(
-        type='IterTimerHook'),
-    visualization=dict(
-        draw_gt=True,
-        draw_pred=True,
-        enable=True,
-        interval=1,
-        show=False,
-        type='VisualizationHook'))
-default_scope='mmocr'
-env_cfg=dict(
-    cudnn_benchmark=False,
-    dist_cfg=dict(
-        backend='nccl'),
-    mp_cfg=dict(
-        mp_start_method='fork',
-        opencv_num_threads=0))
-launcher='none'
-load_from=None
-log_level='INFO'
-log_processor=dict(
-    by_epoch=True,
-    type='LogProcessor',
-    window_size=10)
-model=dict(
-    backbone=dict(
-        depth=18,
-        frozen_stages=-1,
-        init_cfg=dict(
-            checkpoint='torchvision://resnet18',
-            type='Pretrained'),
-        norm_cfg=dict(
-            requires_grad=True,
-            type='BN'),
-        norm_eval=False,
-        num_stages=4,
-        out_indices=(
-            0,
-            1,
-            2,
-            3,
-            ),
-        style='caffe',
-        type='mmdet.ResNet'),
-    data_preprocessor=dict(
-        bgr_to_rgb=True,
-        mean=[
-            123.675,
-            116.28,
-            103.53,
-            ],
-        pad_size_divisor=32,
-        std=[
-            58.395,
-            57.12,
-            57.375,
-            ],
-        type='TextDetDataPreprocessor'),
-    det_head=dict(
-        in_channels=256,
-        module_loss=dict(
-            type='DBModuleLoss'),
-        postprocessor=dict(
-            text_repr_type='quad',
-            type='DBPostprocessor'),
-        type='DBHead'),
-    neck=dict(
-        in_channels=[
-            64,
-            128,
-            256,
-            512,
-            ],
-        lateral_channels=256,
-        type='FPNC'),
-    type='DBNet')
-optim_wrapper=dict(
-    optimizer=dict(
-        lr=0.007,
-        momentum=0.9,
-        type='SGD',
-        weight_decay=0.0001),
-    type='OptimWrapper')
-param_scheduler=[
-    dict(end=1200,
-        eta_min=1e-07,
-        power=0.9,
-        type='PolyLR'),
-    ]
-randomness=dict(
-    seed=None)
-resume=False
-test_cfg=dict(
-    type='TestLoop')
-test_dataloader=dict(
-    batch_size=1,
-    dataset=dict(
-        root_dir='/vast/zw4603/data/SoccerNetGS/valid',
-        type='NestedOCRDataset'),
-    num_workers=4,
-    persistent_workers=True,
-    sampler=dict(
-        shuffle=False,
-        type='DefaultSampler'))
-test_evaluator=dict(
-    type='HmeanIOUMetric')
-test_pipeline=[
-    dict(color_type='color_ignore_orientation',
-        type='LoadImageFromFile'),
-    dict(keep_ratio=True,
-        scale=(
-            1333,
-            736,
-            ),
-        type='Resize'),
-    dict(type='LoadOCRAnnotations',
-        with_bbox=True,
-        with_label=True,
-        with_polygon=True),
-    dict(meta_keys=(
-            'img_path',
-            'ori_shape',
-            'img_shape',
-            'scale_factor',
-            ),
-        type='PackTextDetInputs'),
-    ]
-train_cfg=dict(
-    max_epochs=1200,
-    type='EpochBasedTrainLoop',
-    val_interval=20)
-train_dataloader=functools.partial(<class 'torch.utils.data.dataloader.DataLoader'>, collate_fn=<function custom_collate_fn at 0x1462a0a11f30>, batch_size=16, num_workers=4, persistent_workers=True, sampler={'type': 'DefaultSampler', 'shuffle': True}, dataset={'type': 'NestedOCRDataset', 'root_dir': '/vast/zw4603/data/SoccerNetGS/train'})
-train_pipeline=[
-    dict(color_type='color_ignore_orientation',
-        type='LoadImageFromFile'),
-    dict(type='LoadOCRAnnotations',
-        with_bbox=True,
-        with_label=True,
-        with_polygon=True),
-    dict(brightness=0.12549019607843137,
-        op='ColorJitter',
-        saturation=0.5,
-        type='TorchVisionWrapper'),
-    dict(args=[
-            [
-                    'Fliplr',
-                    0.5,
-                    ],
-            dict(cls='Affine',
-                rotate=[
-                    -10,
-                    10,
-                    ]),
-            [
-                    'Resize',
-                    [
-                            0.5,
-                            3.0,
-                            ],
-                    ],
-            ],
-        type='ImgAugWrapper'),
-    dict(min_side_ratio=0.1,
-        type='RandomCrop'),
-    dict(keep_ratio=True,
-        scale=(
-            640,
-            640,
-            ),
-        type='Resize'),
-    dict(size=(
-            640,
-            640,
-            ),
-        type='Pad'),
-    dict(meta_keys=(
-            'img_path',
-            'ori_shape',
-            'img_shape',
-            ),
-        type='PackTextDetInputs'),
-    ]
-val_cfg=dict(
-    type='ValLoop')
-val_dataloader=functools.partial(<class 'torch.utils.data.dataloader.DataLoader'>, collate_fn=<function custom_collate_fn at 0x1462a0a11f30>, batch_size=1, num_workers=4, persistent_workers=True, sampler={'type': 'DefaultSampler', 'shuffle': False}, dataset={'type': 'NestedOCRDataset', 'root_dir': '/vast/zw4603/data/SoccerNetGS/valid'})
-val_evaluator=dict(
-    type='HmeanIOUMetric')
-vis_backends=[
-    dict(save_dir='/vast/zw4603/mmocr/tensorboard_logs',
-        type='TensorboardVisBackend'),
-    ]
-visualizer=dict(
-    name='visualizer',
-    type='TextDetLocalVisualizer',
-    vis_backends=[
-        dict(save_dir='/vast/zw4603/mmocr/tensorboard_logs',
-            type='TensorboardVisBackend'),
-        ])
-work_dir='/vast/zw4603/mmocr/dbnet/'
+2024-10-30 10:06:08,810 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 11104
+  File "/home/zw4603/soccernet/mmocr/tools/train.py", line 109, in main
+2024-10-30 10:06:08,810 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 42390
+2024-10-30 10:06:08,810 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 32322
+    runner.train()
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/runner.py", line 1777, in train
+2024-10-30 10:06:08,810 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 17516
+2024-10-30 10:06:08,810 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 42343
+2024-10-30 10:06:08,810 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 7401
+2024-10-30 10:06:08,810 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 29025
+2024-10-30 10:06:08,810 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 16244
+2024-10-30 10:06:08,810 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 8715
+2024-10-30 10:06:08,810 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 13120
+2024-10-30 10:06:08,810 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 41792
+2024-10-30 10:06:08,810 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 7392
+2024-10-30 10:06:08,810 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 11190
+2024-10-30 10:06:08,810 - mmocr.datasets.nested_ocr_dataset - ERROR - IndexError: list index out of range. Returning None for idx 25095
+    model = self.train_loop.run()  # type: ignore
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/loops.py", line 98, in run
+    self.run_epoch()
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/loops.py", line 115, in run_epoch
+    self.run_iter(idx, data_batch)
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/runner/loops.py", line 131, in run_iter
+    outputs = self.runner.model.train_step(
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/model/base_model/base_model.py", line 113, in train_step
+    data = self.data_preprocessor(data, True)
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1194, in _call_impl
+    return forward_call(*input, **kwargs)
+  File "/home/zw4603/soccernet/mmocr/mmocr/models/textdet/data_preprocessors/data_preprocessor.py", line 123, in forward
+    data = super().forward(data=data, training=training)
+  File "/vast/zw4603/conda-envs/tracklab/lib/python3.10/site-packages/mmengine/model/base_model/data_preprocessor.py", line 256, in forward
+    _batch_inputs = data['inputs']
+TypeError: list indices must be integers or slices, not str

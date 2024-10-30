@@ -6,7 +6,16 @@ import torch.nn as nn
 from mmengine.model import ImgDataPreprocessor
 
 from mmocr.registry import MODELS
+import logging
 
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,  # Set to INFO to display info logs
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[logging.StreamHandler()]  # Output logs to console
+)
+
+log = logging.getLogger(__name__)  # Use __name__ to identify the logger
 
 @MODELS.register_module()
 class TextDetDataPreprocessor(ImgDataPreprocessor):
@@ -72,6 +81,33 @@ class TextDetDataPreprocessor(ImgDataPreprocessor):
         else:
             self.batch_augments = None
 
+    def restructure_data(self, batch):
+        """Ensure correct input format with validation."""
+        image_paths = batch[0]
+        metadata = batch[1]
+
+        # Ensure inputs are a list
+        inputs = list(image_paths)
+
+        # Build data samples with validation
+        data_samples = []
+        for i in range(len(image_paths)):
+            bbox = {
+                'x': float(metadata['bbox_image']['x'][i]),
+                'y': float(metadata['bbox_image']['y'][i]),
+                'w': float(metadata['bbox_image']['w'][i]),
+                'h': float(metadata['bbox_image']['h'][i])
+            }
+            data_sample = {
+                'image_id': metadata['image_id'][i],
+                'category_id': metadata['category_id'][i],
+                'bbox': bbox
+            }
+            data_samples.append(data_sample)
+
+        return {'inputs': inputs, 'data_samples': data_samples}
+
+
     def forward(self, data: Dict, training: bool = False) -> Dict:
         """Perform normalization、padding and bgr2rgb conversion based on
         ``BaseDataPreprocessor``.
@@ -83,13 +119,15 @@ class TextDetDataPreprocessor(ImgDataPreprocessor):
         Returns:
             dict: Data in the same format as the model input.
         """
+
         data = super().forward(data=data, training=training)
+        
         inputs, data_samples = data['inputs'], data['data_samples']
 
         if data_samples is not None:
             batch_input_shape = tuple(inputs[0].size()[-2:])
             for data_sample in data_samples:
-                data_sample.set_metainfo(
+                data_sample.gt_instances.set_metainfo(
                     {'batch_input_shape': batch_input_shape})
 
         if training and self.batch_augments is not None:

@@ -3,23 +3,10 @@ import argparse
 import logging
 import os
 import os.path as osp
-from functools import partial
-from torch.utils.data import DataLoader
 from mmengine.config import Config, DictAction
 from mmengine.logging import print_log
 from mmengine.registry import RUNNERS
 from mmengine.runner import Runner
-
-def custom_collate_fn(batch):
-    """Ensure batch data matches the expected format."""
-    batch = [item for item in batch if item is not None]  # Filter None items
-
-    # Extract inputs and annotations
-    inputs = [item['inputs'] for item in batch]
-    data_samples = [item['annotations'] for item in batch]
-
-    # Return structured data
-    return {'inputs': inputs, 'data_samples': data_samples}
     
 def parse_args():
     parser = argparse.ArgumentParser(description='Train a model')
@@ -107,9 +94,6 @@ def main():
             raise RuntimeError('Can not find "auto_scale_lr" or '
                                '"auto_scale_lr.base_batch_size" in your'
                                ' configuration file.')
-
-    cfg.train_dataloader = partial(DataLoader, collate_fn=custom_collate_fn, **cfg.train_dataloader)
-    cfg.val_dataloader = partial(DataLoader, collate_fn=custom_collate_fn, **cfg.val_dataloader)
 
     # build the runner from config
     if 'runner_type' not in cfg:
