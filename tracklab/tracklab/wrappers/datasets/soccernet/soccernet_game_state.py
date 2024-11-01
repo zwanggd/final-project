@@ -5,6 +5,7 @@ import zipfile
 import numpy as np
 import pandas as pd
 import json
+import cv2
 
 from pathlib import Path
 from SoccerNet.Downloader import SoccerNetDownloader
@@ -13,6 +14,7 @@ from tracklab.datastruct import TrackingDataset, TrackingSet
 from tracklab.utils import xywh_to_ltwh
 from tracklab.utils.progress import progress
 from multiprocessing import Pool
+
 
 log = logging.getLogger(__name__)
 
@@ -294,6 +296,13 @@ def video_dir_to_dfs(args):
         }
     
 def load_set(dataset_path, nvid=-1, vids_filter_set=None):
+
+    if needs_conversion(dataset_path):
+        print("Conversion needed. Starting conversion...")
+        convert_video_to_frames(dataset_path)
+    else:
+        print("Conversion not needed.")
+
     video_metadatas_list = []
     image_metadata_list = []
     annotations_pitch_camera_list = []
@@ -302,7 +311,6 @@ def load_set(dataset_path, nvid=-1, vids_filter_set=None):
     split = os.path.basename(dataset_path)  # Get the split name from the dataset path
     video_list = os.listdir(dataset_path)
     video_list.sort()
-
     if vids_filter_set is not None and len(vids_filter_set) > 0:
         missing_videos = set(vids_filter_set) - set(video_list)
         if missing_videos:
@@ -318,7 +326,10 @@ def load_set(dataset_path, nvid=-1, vids_filter_set=None):
 
     pool = Pool()
     args = [{"dataset_path": dataset_path, "video_folder": video_folder, "split": split} for video_folder in video_list]
+    log.info(f"args: {args}")
+
     for result in progress(pool.imap_unordered(video_dir_to_dfs, args), total=len(args), desc=f"Loading SoccerNetGS '{split}' set videos"):
+
         if result is not None:
             video_metadatas_list.append(result["video_metadata"])
             image_metadata_list.append(result["image_metadata"])
@@ -407,3 +418,104 @@ def download_dataset(dataset_path, splits=("train", "valid", "test", "challenge"
             log.info(f"Unzipping {split} split...")
             with zipfile.ZipFile(dataset_path/"gamestate-2024"/f"{split}.zip", 'r') as zf:
                 zf.extractall(dataset_path / split)
+
+def needs_conversion(video_path):
+    # Get the directory and filename without extension
+    dirname = os.path.splitext(os.path.basename(video_path))[0]
+    if(dirname != "testing_clips"):
+        return False
+    
+    video_dir = os.path.dirname(video_path)
+    video_name = os.path.splitext(os.path.basename(video_path))[0]
+    
+    # Paths for the img1 folder and metadata file
+    img1_path = os.path.join(video_dir, 'img1')
+    metadata_path = os.path.join(video_dir, "Labels-GameState.json")
+    
+    # Check if the img1 folder and metadata file exist
+    if not os.path.exists(img1_path) or not os.path.exists(metadata_path):
+        return True  # Conversion is needed
+
+    # Check if the img1 folder contains images
+    images = [f for f in os.listdir(img1_path) if f.endswith('.jpg')]
+    if not images:
+        return True  # No images found, conversion is needed
+
+    # Conversion not needed if all checks pass
+    return False
+
+def convert_video_to_frames(video_path):
+    # Get the directory and filename without extension
+    video_dir = os.path.dirname(video_path)
+    video_name = os.path.splitext(os.path.basename(video_path))[0]
+    
+    # Create the img1 folder if it doesn't exist
+    img1_path = os.path.join(video_dir, 'img1')
+    os.makedirs(img1_path, exist_ok=True)
+    
+    # Path for the metadata file
+    metadata_path = os.path.join(video_dir, "Labels-GameState.json")
+    
+    # Capture the video using OpenCV
+    cap = cv2.VideoCapture(video_path)
+    
+    # Get video properties
+    frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
+    frame_rate = int(cap.get(cv2.CAP_PROP_FPS))
+    width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+    height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+    video_id = video_name
+    
+    # Initialize metadata
+    metadata = {
+        "info": {
+            "id": video_id,
+            "name": os.path.basename(video_path),
+            "seq_length": frame_count,
+            "frame_rate": frame_rate,
+            "im_width": width,
+            "im_height": height,
+            "clip_start": 0,
+            "clip_stop": frame_count,
+            "num_tracklets": 0,  # Placeholder
+            "game_time_start": "0 - 00:00",
+            "game_time_stop": f"{frame_count // frame_rate} - 00:00",  # Placeholder for simplicity
+            "half_period_start": 1,
+            "half_period_stop": 1,
+        },
+        "images": [],
+        "annotations": [],  # Placeholder for later annotations
+        "categories": []  # Placeholder for later categories
+    }
+
+    frame_number = 0
+    success = True
+
+    # Iterate through each frame and save it
+    while success:
+        success, frame = cap.read()
+        if not success:
+            break
+
+        frame_filename = f"{frame_number:06d}.jpg"
+        frame_path = os.path.join(img1_path, frame_filename)
+        cv2.imwrite(frame_path, frame)
+        
+        # Add frame metadata
+        metadata["images"].append({
+            "image_id": frame_number,
+            "file_name": os.path.join('img1', frame_filename),
+            "width": width,
+            "height": height,
+            "is_labeled": False  # Placeholder
+        })
+        frame_number += 1
+
+    cap.release()
+    
+    # Save metadata to JSON file
+    with open(metadata_path, 'w') as json_file:
+        json.dump(metadata, json_file, indent=2)
+    
+    print(f"Video converted to frames and metadata saved at: {video_dir}")
+
