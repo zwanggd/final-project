@@ -1,6 +1,8 @@
 from torch.utils.data import Dataset
 from tracklab.utils.cv2 import cv2_load_image
+import logging
 
+log = logging.getLogger(__name__)
 
 class EngineDatapipe(Dataset):
     def __init__(self, model) -> None:
@@ -25,6 +27,7 @@ class EngineDatapipe(Dataset):
             raise ValueError(f"You should provide the appropriate level for you module not '{self.model.level}'")
 
     def __getitem__(self, idx):
+        
         if self.model.level == "detection":
             detection = self.detections.iloc[idx]
             metadata = self.img_metadatas.loc[detection.image_id]

@@ -31,7 +31,7 @@ class SoccerNetGameState(TrackingDataset):
         assert self.dataset_path.exists(), f"'{self.dataset_path}' directory does not exist. Please check the path or download the dataset following the instructions here: https://github.com/SoccerNet/sn-gamestate"
 
         sets = {}
-        for split in ["train", "valid", "test", "challenge"]:
+        for split in ["train", "valid", "test", "challenge", "testing_clips"]:
             if os.path.exists(self.dataset_path / split):
                 sets[split] = load_set(self.dataset_path / split, nvid, vids_dict.get(split, []))
             else:
@@ -208,7 +208,7 @@ def video_dir_to_dfs(args):
     dataset_path = args['dataset_path']
     video_folder = args['video_folder']
     split = args['split']
-    split_id = ["train", "valid", "test", "challenge"].index(split) + 1
+    split_id = ["train", "valid", "test", "challenge", "testing_clips"].index(split) + 1
     annotation_pitch_camera_df = None
     detections_df = None
     video_level_categories = []
@@ -429,8 +429,8 @@ def needs_conversion(video_path):
     video_name = os.path.splitext(os.path.basename(video_path))[0]
     
     # Paths for the img1 folder and metadata file
-    img1_path = os.path.join(video_dir, 'img1')
-    metadata_path = os.path.join(video_dir, "Labels-GameState.json")
+    img1_path = os.path.join(video_path, 'SNGS-000', 'img1')
+    metadata_path = os.path.join(video_path, 'SNGS-000', "Labels-GameState.json")
     
     # Check if the img1 folder and metadata file exist
     if not os.path.exists(img1_path) or not os.path.exists(metadata_path):
@@ -446,31 +446,31 @@ def needs_conversion(video_path):
 
 def convert_video_to_frames(video_path):
     # Get the directory and filename without extension
-    video_dir = os.path.dirname(video_path)
-    video_name = os.path.splitext(os.path.basename(video_path))[0]
+    # log.info(f"Video path: {video_path}")
     
     # Create the img1 folder if it doesn't exist
-    img1_path = os.path.join(video_dir, 'img1')
+    img1_path = os.path.join(video_path, 'SNGS-000', 'img1')
+    video_source_name = os.path.join(video_path, 'SoccerClip.mp4')
     os.makedirs(img1_path, exist_ok=True)
     
     # Path for the metadata file
-    metadata_path = os.path.join(video_dir, "Labels-GameState.json")
+    metadata_path = os.path.join(video_path,'SNGS-000', "Labels-GameState.json")
     
     # Capture the video using OpenCV
-    cap = cv2.VideoCapture(video_path)
+    cap = cv2.VideoCapture(video_source_name)
     
     # Get video properties
     frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
     frame_rate = int(cap.get(cv2.CAP_PROP_FPS))
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
-    video_id = video_name
+    video_id = video_source_name
     
     # Initialize metadata
     metadata = {
         "info": {
             "id": video_id,
-            "name": os.path.basename(video_path),
+            "name": os.path.basename(video_source_name),
             "seq_length": frame_count,
             "frame_rate": frame_rate,
             "im_width": width,
@@ -488,7 +488,7 @@ def convert_video_to_frames(video_path):
         "categories": []  # Placeholder for later categories
     }
 
-    frame_number = 0
+    frame_number = 1
     success = True
 
     # Iterate through each frame and save it
@@ -514,8 +514,8 @@ def convert_video_to_frames(video_path):
     cap.release()
     
     # Save metadata to JSON file
-    with open(metadata_path, 'w') as json_file:
-        json.dump(metadata, json_file, indent=2)
+    # with open(metadata_path, 'w') as json_file:
+    #     json.dump(metadata, json_file, indent=2)
     
-    print(f"Video converted to frames and metadata saved at: {video_dir}")
+    print(f"Video converted to frames and metadata saved at: {video_path}")
 
