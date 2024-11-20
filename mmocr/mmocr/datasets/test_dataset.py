@@ -10,8 +10,8 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)  # Use __name__ to identify the logger
 
-train_dataset = NestedOCRDataset(root_dir='/vast/zw4603/data/train')
-val_dataset = NestedOCRDataset(root_dir='/vast/zw4603/data/valid')
+train_dataset = NestedOCRDataset(root_dir='/Users/kai/GSR/data/SoccerNetGS/train')
+val_dataset = NestedOCRDataset(root_dir='/Users/kai/GSR/data/SoccerNetGS/valid')
 
 # Define the DataLoader with the custom collate function
 def custom_collate_fn(batch):

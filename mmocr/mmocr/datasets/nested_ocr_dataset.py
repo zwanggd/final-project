@@ -19,7 +19,7 @@ log = logging.getLogger(__name__)
 
 @DATASETS.register_module()
 class NestedOCRDataset:
-    def __init__(self, root_dir, checkpoint_dir='/vast/zw4603/mmocr/converted_dataset'):
+    def __init__(self, root_dir, checkpoint_dir='/Users/kai/GSR/mmocr/converted_dataset'):
         self.image_paths = []
         self.annotations = []
         self.metainfos = []

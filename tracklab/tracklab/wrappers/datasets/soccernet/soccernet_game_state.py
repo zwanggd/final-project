@@ -31,7 +31,9 @@ class SoccerNetGameState(TrackingDataset):
         assert self.dataset_path.exists(), f"'{self.dataset_path}' directory does not exist. Please check the path or download the dataset following the instructions here: https://github.com/SoccerNet/sn-gamestate"
 
         sets = {}
-        for split in ["train", "valid", "test", "challenge", "testing_clips"]:
+        # for split in ["train", "valid", "test", "challenge", "testing_clips"]:
+        for split in ["train", "valid", "test", "challenge"]:
+
             if os.path.exists(self.dataset_path / split):
                 sets[split] = load_set(self.dataset_path / split, nvid, vids_dict.get(split, []))
             else:
@@ -208,7 +210,9 @@ def video_dir_to_dfs(args):
     dataset_path = args['dataset_path']
     video_folder = args['video_folder']
     split = args['split']
-    split_id = ["train", "valid", "test", "challenge", "testing_clips"].index(split) + 1
+    # split_id = ["train", "valid", "test", "challenge", "testing_clips"].index(split) + 1
+    split_id = ["train", "valid", "test", "challenge"].index(split) + 1
+
     annotation_pitch_camera_df = None
     detections_df = None
     video_level_categories = []
@@ -446,7 +450,7 @@ def needs_conversion(video_path):
 
 def convert_video_to_frames(video_path):
     # Get the directory and filename without extension
-    # log.info(f"Video path: {video_path}")
+    log.info(f"Video path: {video_path}")
     
     # Create the img1 folder if it doesn't exist
     img1_path = os.path.join(video_path, 'SNGS-000', 'img1')

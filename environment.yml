@@ -256,4 +256,4 @@ dependencies:
       - yarl==1.13.1
       - yt-dlp==2024.9.27
       - zipp==3.20.2
-prefix: /vast/zw4603/conda-envs/tracklab
+prefix: /opt/anaconda3/envs/tracklab

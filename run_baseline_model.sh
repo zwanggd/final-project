@@ -17,7 +17,7 @@ conda activate tracklab  # replace with your conda environment name
 
 cd /home/zw4603/soccernet/sn-gamestate/sn_gamestate/configs/
 
-export PYTHONPATH=$PYTHONPATH:/home/zw4603/soccernet/tracklab
+export PYTHONPATH=$PYTHONPATH:/Users/kai/GSR/soccernet/tracklab
 # Run your Python command
 python -m tracklab.main -cn soccernet
 

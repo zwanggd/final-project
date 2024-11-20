@@ -51,6 +51,7 @@ def parse_args():
 
 
 def main():
+    os.environ["PYTORCH_ENABLE_MPS_FALLBACK"] = "1"
     args = parse_args()
 
     # load config
@@ -103,6 +104,7 @@ def main():
         # build customized runner from the registry
         # if 'runner_type' is set in the cfg
         runner = RUNNERS.build(cfg)
+
 
 
     # start training

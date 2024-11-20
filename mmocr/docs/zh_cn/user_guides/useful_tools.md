@@ -38,6 +38,7 @@ python tools/visualizations/browse_dataset.py \
 ```Bash
 # 使用默认参数可视化 "dbnet_r50dcn_v2_fpnc_1200e_icadr2015" 模型的训练数据
 python tools/visualizations/browse_dataset.py configs/textdet/dbnet/dbnet_resnet50-dcnv2_fpnc_1200e_icdar2015.py
+python tools/visualizations/browse_dataset.py configs/textdet/dbnet/dbnet_resnet18_fpnc_1200e_icdar2015.py
 ```
 
 默认情况下，可视化模式为 "transformed"，您将看到经由数据流水线变换过后的图像和标注：

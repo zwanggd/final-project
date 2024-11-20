@@ -22,11 +22,11 @@ class MMOCR(DetectionLevelModule):
 
     def __init__(self, batch_size, device, tracking_dataset=None):
         super().__init__(batch_size=batch_size)
-        self.ocr = MMOCRInferencer(det='dbnet_resnet18_fpnc_1200e_icdar2015', rec='SAR')
+        self.ocr = MMOCRInferencer(det='dbnet_resnet50-dcnv2_fpnc_1200e_icdar2015', rec='SAR')
         self.batch_size = batch_size
 
         self.textdetinferencer = TextDetInferencer(
-            'dbnet_resnet18_fpnc_1200e_icdar2015', device=device)
+            'dbnet_resnet50-dcnv2_fpnc_1200e_icdar2015', device=device)
         self.textrecinferencer = TextRecInferencer('SAR', device=device)
 
     def no_jersey_number(self):
