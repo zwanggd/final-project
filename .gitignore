@@ -1,2 +1,7 @@
 sn-gamestate/sn_gamestate/configs/soccernet.yaml
 environment.yml
+run_baseline_model.sh
+mmocr/configs/textdet/_base_/default_runtime.py
+sn-gamestate/sn_gamestate/configs/soccernet.yaml
+sn-gamestate/sn_gamestate/configs/None/eval/pred/SoccerNetGameState-valid.zip
+tracklab/tracklab/configs/config.yaml
