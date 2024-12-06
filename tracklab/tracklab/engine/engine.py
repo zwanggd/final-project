@@ -5,6 +5,8 @@ import numpy as np
 import pandas as pd
 import torch
 from lightning.fabric import Fabric
+import logging
+import time
 
 from abc import abstractmethod, ABC
 
@@ -15,6 +17,7 @@ if TYPE_CHECKING:
 
 from tracklab.datastruct import TrackerState
 
+log = logging.getLogger(__name__)
 
 def merge_dataframes(main_df, appended_piece):
     # Convert appended_piece to a DataFrame if it's not already
@@ -151,12 +154,21 @@ class TrackingEngine(ABC):
         """
         pass
 
+    def capture_data_decorator(process_func):
+        def wrapper(*args, **kwargs):
+            print(f"Input Data: {args}, {kwargs}")
+            result = process_func(*args, **kwargs)
+            print(f"Output Data: {result}")
+            return result
+        return wrapper
+    
     def default_step(self, batch: Any, task: str, detections: pd.DataFrame,
                      image_pred: pd.DataFrame, **kwargs):
         model = self.models[task]
         self.callback(f"on_module_step_start", task=task, batch=batch)
         idxs, batch = batch
         idxs = idxs.cpu() if isinstance(idxs, torch.Tensor) else idxs
+
         if model.level == "image":
             batch_metadatas = image_pred.loc[list(idxs)]  # self.img_metadatas.loc[idxs]
             if len(detections) > 0:
@@ -185,6 +197,7 @@ class TrackingEngine(ABC):
             batch_detections, batch_metadatas = batch_detections
             image_pred = merge_dataframes(image_pred, batch_metadatas)
         detections = merge_dataframes(detections, batch_detections)
+
         self.callback(
             f"on_module_step_end", task=task, batch=batch, detections=detections
         )

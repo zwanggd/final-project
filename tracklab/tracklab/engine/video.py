@@ -2,6 +2,7 @@ import platform
 from functools import partial
 from typing import Any
 
+import time
 import cv2
 import numpy as np
 import pandas as pd
@@ -64,6 +65,7 @@ class VideoOnlineTrackingEngine:
         self.callback("on_dataset_track_end")
 
     def video_loop(self):
+
         for name, model in self.models.items():
             if hasattr(model, "reset"):
                 model.reset()
@@ -93,6 +95,7 @@ class VideoOnlineTrackingEngine:
             self.callback("on_image_loop_start",
                           image_metadata=metadata, image_idx=frame_idx, index=frame_idx)
             for model_name in model_names:
+                
                 model = self.models[model_name]
                 if len(detections) > 0:
                     dets = detections[detections.image_id == frame_idx]
@@ -109,7 +112,6 @@ class VideoOnlineTrackingEngine:
                         batch = model.preprocess(image=image, detection=detection, metadata=metadata)
                         batch = type(model).collate_fn([(detection.name, batch)])
                         detections = self.default_step(batch, model_name, detections, metadata)
-
             self.callback("on_image_loop_end",
                           image_metadata=metadata, image=image,
                           image_idx=frame_idx, detections=detections)
