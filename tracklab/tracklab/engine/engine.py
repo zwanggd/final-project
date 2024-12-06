@@ -5,6 +5,10 @@ import numpy as np
 import pandas as pd
 import torch
 from lightning.fabric import Fabric
+import logging
+import time
+
+log = logging.getLogger(__name__)
 
 from abc import abstractmethod, ABC
 
@@ -157,6 +161,9 @@ class TrackingEngine(ABC):
         self.callback(f"on_module_step_start", task=task, batch=batch)
         idxs, batch = batch
         idxs = idxs.cpu() if isinstance(idxs, torch.Tensor) else idxs
+
+        # start_time = time.time()
+        # log.info(f"Module: {model.name} started")
         if model.level == "image":
             batch_metadatas = image_pred.loc[list(idxs)]  # self.img_metadatas.loc[idxs]
             if len(detections) > 0:
@@ -185,6 +192,10 @@ class TrackingEngine(ABC):
             batch_detections, batch_metadatas = batch_detections
             image_pred = merge_dataframes(image_pred, batch_metadatas)
         detections = merge_dataframes(detections, batch_detections)
+
+        # elapsed_time = time.time() - start_time
+        # log.info(f"Module: {model.name} end, time consume: {elapsed_time:.4f} seconds")
+
         self.callback(
             f"on_module_step_end", task=task, batch=batch, detections=detections
         )

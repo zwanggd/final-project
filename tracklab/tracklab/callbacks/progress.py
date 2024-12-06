@@ -1,6 +1,7 @@
 import pandas as pd
 import logging
 
+import time
 from typing import Any, Optional
 from rich.progress import Progress, TextColumn, BarColumn, \
     TimeRemainingColumn, MofNCompleteColumn, TimeElapsedColumn
@@ -45,7 +46,7 @@ class TQDMProgressbar(Progressbar):
         n = index
         total = len(engine.video_metadatas)
         self.video_id = video_idx
-        self.pbar.set_description(f"Tracking videos ({video_metadata['name']})")
+        self.pbar.set_description(f"Tracking videos({video_metadata['name']})")
 
     def on_video_loop_end(
         self,
@@ -84,6 +85,8 @@ class RichProgressbar(Progressbar):
     def __init__(self, **kwargs):
         self.pbar: Optional[Progress] = None
         self.tasks = {}
+        self.start_time = 0
+        self.end_time = 0
 
     def on_dataset_track_start(self, engine: TrackingEngine):
         total = len(engine.video_metadatas)
@@ -119,6 +122,9 @@ class RichProgressbar(Progressbar):
         self.pbar.update(self.tasks["main"], advance=1, refresh=True)
 
     def on_module_start(self, engine: TrackingEngine, task: str, dataloader: DataLoader):
+        self.start_time = time.time()
+        log.info(f"New Module: {task} started")
+
         desc = task.replace("_", " ").capitalize()
         if hasattr(engine.models[task], "process_video"):
             length = len(engine.img_metadatas[engine.img_metadatas.video_id == self.video_id])
@@ -135,5 +141,7 @@ class RichProgressbar(Progressbar):
         self.pbar.update(self.tasks[task], advance=1)
 
     def on_module_end(self, engine: TrackingEngine, task: str, detections: pd.DataFrame):
+        self.end_time = time.time() - self.start_time
+        log.info(f"Module: {task} end, time consume: {self.end_time:.4f} seconds")
         self.pbar.stop_task(self.tasks[task])
         self.pbar.remove_task(self.tasks[task])

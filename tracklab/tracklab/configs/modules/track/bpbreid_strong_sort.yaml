@@ -19,3 +19,5 @@ cfg:
   w_kfgd: 1
   w_reid: 1
   w_st: 1
+  cross_exit_threshold: 0.3
+  cross_threshold: 0.5

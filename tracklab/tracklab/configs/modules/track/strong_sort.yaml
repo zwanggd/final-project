@@ -6,6 +6,9 @@ cfg:
   # https://drive.google.com/uc?id=1vduhq5DpN2q1g4fYEZfPI17MJeh9qyrA
   model_weights: ${model_dir}/reid/osnet_x1_0_market_256x128_amsgrad_ep150_stp60_lr0.0015_b64_fb10_softmax_labelsmooth_flip.pt
   fp16: false
+  cross_threshold: 0.5  # 检测交叉的 IoU 阈值
+  cross_exit_threshold: 0.2  # 判断交叉结束的 IoU 阈值
+
 
   min_confidence: 0.4
   ecc: true  # default = true
