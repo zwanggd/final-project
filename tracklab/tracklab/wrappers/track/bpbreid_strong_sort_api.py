@@ -1,4 +1,5 @@
 from collections import defaultdict
+from tracklab.data.global_bbox_store import GlobalBboxStore
 
 import torch
 import numpy as np
@@ -12,6 +13,12 @@ log = logging.getLogger(__name__)
 
 
 class BPBReIDStrongSORT(ImageLevelModule):
+    def __init__(self, cfg, device, batch_size=None, **kwargs):
+        super().__init__(batch_size=1)
+        self.cfg = cfg
+        self.device = device
+        self.reset()
+
     input_columns = [
         "bbox_ltwh",
         "embeddings",
@@ -28,12 +35,6 @@ class BPBReIDStrongSORT(ImageLevelModule):
         "time_since_update",
         "state",
     ]
-
-    def __init__(self, cfg, device, batch_size=None, **kwargs):
-        super().__init__(batch_size=1)
-        self.cfg = cfg
-        self.device = device
-        self.reset()
 
     def reset(self):
         """Reset the tracker state to start tracking in a new video."""
@@ -71,6 +72,8 @@ class BPBReIDStrongSORT(ImageLevelModule):
 
     @torch.no_grad()
     def preprocess(self, image, detections: pd.DataFrame, metadata: pd.Series):
+
+        # log.info(f"Detection in preprocess: {detections}")
         if len(detections) == 0:
             return {
             "id": [],
@@ -102,6 +105,9 @@ class BPBReIDStrongSORT(ImageLevelModule):
     def process(self, batch, detections: pd.DataFrame, metadatas: pd.DataFrame):
         if len(detections) == 0:
             return []
+
+        GlobalBboxStore.frame_counter += 1
+        # Update model with current batch data
         results = self.model.update(
             batch["id"][0],
             batch["bbox_ltwh"][0],
@@ -112,7 +118,33 @@ class BPBReIDStrongSORT(ImageLevelModule):
             batch["frame"][0],
             batch["keypoints"][0] if "keypoints" in batch else None,
         )
+
+        # Ensure required columns are present
+        required_columns = ['track_bbox_kf_ltwh', 'track_id']
+        missing_columns = [col for col in required_columns if col not in results.columns]
+        if missing_columns:
+            raise ValueError(f"Missing required columns in results DataFrame: {missing_columns}")
+
+        # Handle crossing tracks
+        for i, track1 in results.iterrows():
+            for j, track2 in results.iterrows():
+                if i >= j:
+                    continue
+
+                iou = GlobalBboxStore.calculate_iou(track1['track_bbox_kf_ltwh'], track2['track_bbox_kf_ltwh'])
+                # log.info(f"iou: {iou},  threshold: {self.cfg.cross_threshold}")
+                if iou > self.cfg.cross_threshold:
+                    log.info(f"Tracks {track1['track_id']} and {track2['track_id']} are crossing.")
+                    GlobalBboxStore.handle_crossing_tracks(
+                        track1['track_id'], track2['track_id'], track1['track_bbox_kf_ltwh'], track2['track_bbox_kf_ltwh'], iou
+                    )
+
+        # Recover separated tracks
+        GlobalBboxStore.recover_tracks_if_separated(results)
+
+        # Ensure results indexes match detection indexes
         assert set(results.index).issubset(
             detections.index
         ), "Mismatch of indexes during the tracking. The results should match the detections."
+        
         return results

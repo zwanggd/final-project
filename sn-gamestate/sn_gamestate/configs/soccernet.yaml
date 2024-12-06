@@ -54,12 +54,12 @@ use_wandb: False
 use_rich: True
 
 modules: # Allows module-specific batch_size and other configuration
-  bbox_detector: {batch_size: 8}
-  pose_bottomup: {batch_size: 8}
+  bbox_detector: {batch_size: 16}  # changed from 8
+  pose_bottomup: {batch_size: 16}
   reid: {batch_size: 64} # changed from 64
   track: {batch_size: 64} # changed from 64
-  pitch: {batch_size: 1}
-  calibration: {batch_size: 1}
+  pitch: {batch_size: 4} # changed from 1
+  calibration: {batch_size: 4} # changed from 1
   jersey_number_detect: {batch_size: 8}
 
 # Flags

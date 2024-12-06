@@ -19,6 +19,7 @@ if TYPE_CHECKING:
 
 from tracklab.datastruct import TrackerState
 
+log = logging.getLogger(__name__)
 
 def merge_dataframes(main_df, appended_piece):
     # Convert appended_piece to a DataFrame if it's not already
@@ -155,6 +156,14 @@ class TrackingEngine(ABC):
         """
         pass
 
+    def capture_data_decorator(process_func):
+        def wrapper(*args, **kwargs):
+            print(f"Input Data: {args}, {kwargs}")
+            result = process_func(*args, **kwargs)
+            print(f"Output Data: {result}")
+            return result
+        return wrapper
+    
     def default_step(self, batch: Any, task: str, detections: pd.DataFrame,
                      image_pred: pd.DataFrame, **kwargs):
         model = self.models[task]
