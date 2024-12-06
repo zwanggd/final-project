@@ -20,7 +20,7 @@ cfg:
     display_team: True
     display_role: True
     print_id: True
-    print_bbox_confidence: False
+    print_bbox_confidence: True
     # debug
     print_keypoints_confidence: False
     draw_bpbreid_heatmaps: False
