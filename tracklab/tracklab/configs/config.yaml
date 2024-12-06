@@ -27,7 +27,9 @@ pipeline:
 experiment_name: "tracklab"
 
 # Path definitions
-data_dir: "/Users/kai/GSR/data"
+#data_dir: "/Users/kai/GSR/data"
+data_dir: "/vast/zw4603/data"
+
 model_dir: "${project_dir}/pretrained_models"
 
 # Machine configuration
@@ -51,6 +53,8 @@ hydra:
   job:
     chdir: True
   run:
-    dir: "/Users/kai/GSR/outputs/${experiment_name}/${now:%Y-%m-%d}/${now:%H-%M-%S}"
+    # dir: "/Users/kai/GSR/outputs/${experiment_name}/${now:%Y-%m-%d}/${now:%H-%M-%S}"
+    dir: "/vast/zw4603/outputs/${experiment_name}/${now:%Y-%m-%d}/${now:%H-%M-%S}"
+
   sweep:
     dir: "multirun_outputs/${experiment_name}/${now:%Y-%m-%d}/${now:%H-%M-%S}"

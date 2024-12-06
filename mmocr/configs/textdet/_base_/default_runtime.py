@@ -34,7 +34,7 @@ val_evaluator = dict(type='HmeanIOUMetric')
 test_evaluator = val_evaluator
 
 # Visualization
-vis_backends = [dict(type='TensorboardVisBackend', save_dir='/Users/kai/GSR/mmocr/tensorboard_logs')]
+vis_backends = [dict(type='TensorboardVisBackend', save_dir='/home/zw4603/GSR/mmocr/tensorboard_logs')]
 visualizer = dict(
     type='TextDetLocalVisualizer',
     name='visualizer',
