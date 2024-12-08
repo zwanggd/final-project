@@ -149,5 +149,5 @@ class MMOCR(DetectionLevelModule):
                 result_out['rec_scores'].append(rec_dict_res['scores'])
             pred_results[i].update(result_out)
 
-        log.info(f"mmocr result: {pred_results}")
+        # log.info(f"mmocr result: {pred_results}")
         return pred_results

@@ -48,6 +48,6 @@ class MajorityVoteTracklet(VideoLevelModule):
                 attribute_value = [select_highest_voted_att(attribute_detection, attribute_confidence)] * len(tracklet)            
                 detections.loc[tracklet.index, attribute] = attribute_value
             
-        log.info(f"voted detections: {detections}")
+        log.info(f"majority voted detections: {detections}")
         
         return detections

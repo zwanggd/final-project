@@ -84,6 +84,8 @@ class PitchVisualizationEngine(Callback):
         image_idx: int,
         detections: pd.DataFrame,
     ):
+        log.info(f"pitch visualization: {detections}")
+
         if self.cfg.show_online:
             tracker_state = engine.tracker_state
             if tracker_state.detections_gt is not None:

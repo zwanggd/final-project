@@ -31,5 +31,5 @@ class VotingTrackletJerseyNumber(VideoLevelModule):
                                                     jn_confidences)] * len(tracklet)
             detections.loc[tracklet.index, "jn_tracklet"] = tracklet_jn
 
-        log.info(f"voted detections: {detections}")
+        log.info(f"voted tracklet detections: {detections}")
         return detections
