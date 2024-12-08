@@ -79,7 +79,7 @@ class VideoOnlineTrackingEngine:
             # cv2.resizeWindow(str(self.video_filename))
 
         model_names = self.module_names
-        # print('in offline.py, model_names: ', model_names)
+        print('in offline.py, model_names: ', model_names)
         frame_idx = -1
         detections = pd.DataFrame()
         while video_cap.isOpened():
@@ -95,7 +95,7 @@ class VideoOnlineTrackingEngine:
             self.callback("on_image_loop_start",
                           image_metadata=metadata, image_idx=frame_idx, index=frame_idx)
             for model_name in model_names:
-                
+                # log.info(f"model name: {model_name}")
                 model = self.models[model_name]
                 if len(detections) > 0:
                     dets = detections[detections.image_id == frame_idx]
@@ -112,6 +112,8 @@ class VideoOnlineTrackingEngine:
                         batch = model.preprocess(image=image, detection=detection, metadata=metadata)
                         batch = type(model).collate_fn([(detection.name, batch)])
                         detections = self.default_step(batch, model_name, detections, metadata)
+                # log.info(f'Model: {model_name}: {detection}')
+
             self.callback("on_image_loop_end",
                           image_metadata=metadata, image=image,
                           image_idx=frame_idx, detections=detections)

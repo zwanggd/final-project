@@ -10,6 +10,9 @@ from tracklab.core.visualizer import Visualizer
 from tracklab.datastruct import TrackerState
 from tracklab.utils.cv2 import final_patch, cv2_load_image
 
+import logging
+
+log = logging.getLogger(__name__)
 
 class VisualizationEngine(Callback):
     """ Visualization engine from list of visualizers.
@@ -46,6 +49,7 @@ class VisualizationEngine(Callback):
 
     def on_video_loop_end(self, engine, video_metadata, video_idx, detections,
                           image_pred):
+        log.info(f"Visualizatio engine called: {detections['debug']}")
         if self.save_videos or self.save_images:
             progress = engine.callbacks.get("progress", Progressbar(dummy=True))
             self.visualize(engine.tracker_state, video_idx, detections, image_pred, progress)

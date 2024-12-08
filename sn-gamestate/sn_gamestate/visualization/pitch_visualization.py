@@ -85,7 +85,6 @@ class PitchVisualizationEngine(Callback):
         detections: pd.DataFrame,
     ):
         log.info(f"pitch visualization: {detections}")
-
         if self.cfg.show_online:
             tracker_state = engine.tracker_state
             if tracker_state.detections_gt is not None:
@@ -128,6 +127,8 @@ class PitchVisualizationEngine(Callback):
                     progress = engine.callbacks["progress"]
                 else:
                     progress = None
+
+                log.info(f"on video loop ends: {detections}")
                 self.run(engine.tracker_state, video_idx, detections, image_pred, video_metadata, progress=progress)
 
     def run(self, tracker_state: TrackerState, video_id, detections, image_preds, video_metadata, progress=None):
