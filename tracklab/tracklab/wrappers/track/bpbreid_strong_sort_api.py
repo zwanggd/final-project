@@ -105,7 +105,7 @@ class BPBReIDStrongSORT(ImageLevelModule):
     def process(self, batch, detections: pd.DataFrame, metadatas: pd.DataFrame):
         if len(detections) == 0:
             return []
-
+        
         GlobalBboxStore.frame_counter += 1
         # Update model with current batch data
         results = self.model.update(
@@ -118,6 +118,7 @@ class BPBReIDStrongSORT(ImageLevelModule):
             batch["frame"][0],
             batch["keypoints"][0] if "keypoints" in batch else None,
         )
+        # log.info(f"Detection in strongsort: {results}")
 
         # Ensure required columns are present
         required_columns = ['track_bbox_kf_ltwh', 'track_id']
@@ -135,12 +136,18 @@ class BPBReIDStrongSORT(ImageLevelModule):
                 # log.info(f"iou: {iou},  threshold: {self.cfg.cross_threshold}")
                 if iou > self.cfg.cross_threshold:
                     log.info(f"Tracks {track1['track_id']} and {track2['track_id']} are crossing.")
-                    GlobalBboxStore.handle_crossing_tracks(
+                    result = GlobalBboxStore.handle_crossing_tracks(
                         track1['track_id'], track2['track_id'], track1['track_bbox_kf_ltwh'], track2['track_bbox_kf_ltwh'], iou
                     )
-
-        # Recover separated tracks
-        GlobalBboxStore.recover_tracks_if_separated(results)
+                    if(result == 0):
+                        continue
+                    else:
+                        existing_track, other_track, replace_track = result
+                        results.loc[results['track_id'] == replace_track, 'track_id'] = other_track
+                else:
+                    GlobalBboxStore.recover_tracks_if_separated(
+                        track1['track_id'], track2['track_id'], track1['track_bbox_kf_ltwh'], track2['track_bbox_kf_ltwh'], iou
+                    )
 
         # Ensure results indexes match detection indexes
         assert set(results.index).issubset(

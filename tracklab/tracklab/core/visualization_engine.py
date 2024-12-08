@@ -83,6 +83,7 @@ class VisualizationEngine(Callback):
         image_idx: int,
         detections: pd.DataFrame,
     ):
+        # log.info(f'on image loop end: {detections}')
         if self.cfg.show_online:
             tracker_state = engine.tracker_state
             if tracker_state.detections_gt is not None:
@@ -116,6 +117,7 @@ class VisualizationEngine(Callback):
         self.video_name = video_metadata.name
 
     def on_video_loop_end(self, engine, video_metadata, video_idx, detections, image_pred):
+        log.info(f"visualization engine called: {detections['debug']}")
         if self.cfg.save_videos or self.cfg.save_images:
             if (
                 self.processed_video_counter < self.cfg.process_n_videos

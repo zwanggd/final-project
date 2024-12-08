@@ -5,6 +5,9 @@ import pandas as pd
 from tracklab.callbacks import Callback
 from tracklab.engine import TrackingEngine
 
+import logging
+
+log = logging.getLogger(__name__)
 
 class IgnoredRegions(Callback):
     def on_video_loop_end(
@@ -29,6 +32,9 @@ class IgnoredRegions(Callback):
             )
         else:
             detections["ignored"] = pd.NA
+        
+        # detections = []
+        # log.info(f"handle regions called")
 
     def __init__(self, max_intersection=0.9):
         self.max_intersection = max_intersection

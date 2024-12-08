@@ -67,6 +67,7 @@ def main(cfg):
         # log.info("Debug: Early store for trackstate...")
         
         # Evaluation
+        log.info(f"eval detection: {tracker_state.detections_pred}")
         evaluate(cfg, evaluator, tracker_state)
 
         # Save tracker state

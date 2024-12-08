@@ -52,4 +52,6 @@ class TrackletTeamClustering(VideoLevelModule):
         # Map the team cluster back to the original detections DataFrame
         detections = detections.merge(embedding_tracklet[['track_id', 'team_cluster']], on='track_id', how='left', sort=False)
 
+        # detections = []
+        log.info(f'tracklet team called')
         return detections
