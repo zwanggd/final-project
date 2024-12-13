@@ -22,6 +22,8 @@ def draw_pitch(patch, detections_pred, detections_gt,
     # Draw the lines on the image pitch
     if "lines" in image_pred:
         image_height, image_width, _ = patch.shape
+        pred = image_pred["lines"]
+
         for name, line in image_pred["lines"].items():
             if name == "Circle central" and len(line) > 4:
                 points = np.array([(int(p["x"] * image_width), int(p["y"]*image_height)) for p in line])

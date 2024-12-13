@@ -301,6 +301,14 @@ def video_dir_to_dfs(args):
     
 def load_set(dataset_path, nvid=-1, vids_filter_set=None):
 
+
+    for root, dirs, files in os.walk(dataset_path):
+        for file in files:
+            if file == '.DS_Store':
+                file_path = os.path.join(root, file)
+                os.remove(file_path)
+                print(f'Removed: {file_path}')
+
     if needs_conversion(dataset_path):
         print("Conversion needed. Starting conversion...")
         convert_video_to_frames(dataset_path)
@@ -330,6 +338,12 @@ def load_set(dataset_path, nvid=-1, vids_filter_set=None):
 
     pool = Pool()
     args = [{"dataset_path": dataset_path, "video_folder": video_folder, "split": split} for video_folder in video_list]
+    # args = [
+    #     {"dataset_path": dataset_path, "video_folder": video_folder, "split": split} 
+    #     for video_folder in video_list 
+    #     if video_folder != '.DS_Store'
+    # ]
+
     log.info(f"args: {args}")
 
     for result in progress(pool.imap_unordered(video_dir_to_dfs, args), total=len(args), desc=f"Loading SoccerNetGS '{split}' set videos"):

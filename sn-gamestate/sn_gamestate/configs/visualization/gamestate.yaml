@@ -1,7 +1,7 @@
 _target_: sn_gamestate.visualization.PitchVisualizationEngine
 
 cfg:
-  save_images: True
+  save_images: False
   save_videos: True
   show_online: False
 
@@ -13,14 +13,14 @@ cfg:
 
   prediction:
     draw_bbox: True
-    draw_keypoints: True
-    draw_skeleton: True
-    draw_unmatched: True
+    draw_keypoints: False
+    draw_skeleton: False
+    draw_unmatched: False
     display_jersey_number: True
     display_team: True
     display_role: True
     print_id: True
-    print_bbox_confidence: True
+    print_bbox_confidence: False
     # debug
     print_keypoints_confidence: False
     draw_bpbreid_heatmaps: False

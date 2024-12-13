@@ -252,6 +252,8 @@ class TrackerState(AbstractContextManager):
         self.save()
 
     def update(self, detections: pd.DataFrame, image_metadata):
+        # log.info(f"Tracker state pred: {self.detections_pred}")
+
         if self.detections_pred is None:
             self.detections_pred = detections
             self.image_pred = image_metadata
@@ -269,6 +271,8 @@ class TrackerState(AbstractContextManager):
             self.image_pred = pd.concat(
                 [self.image_pred, image_metadata]
             )
+            # log.info(f"Tracker state: {detections}")
+
 
     def save(self):
         """

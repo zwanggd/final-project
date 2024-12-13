@@ -35,7 +35,10 @@ class MajorityVoteTracklet(VideoLevelModule):
         
     @torch.no_grad()
     def process(self, detections: pd.DataFrame, metadatas: pd.DataFrame):
-        
+
+        log.info(f"outputcolumns: {self.output_columns}")
+        detections = pd.DataFrame(detections)
+        # detections.to_csv("/Users/kai/GSR/soccernet/debug2.csv")
         detections[self.output_columns] = np.nan
         
         if "track_id" not in detections.columns:

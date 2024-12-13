@@ -76,6 +76,8 @@ class TrackEvalEvaluator(EvaluatorBase):
         if not self.cfg.save_gt:
             dataset_config['GT_FOLDER'] = self.dataset_path  # Location of GT data
             dataset_config['GT_LOC_FORMAT'] = '{gt_folder}/{seq}/Labels-GameState.json'  # '{gt_folder}/{seq}/gt/gt.txt'
+        
+        log.info(f"Dataset config: {dataset_config}")
         dataset = self.trackeval_dataset_class(dataset_config)
 
         # Build metrics

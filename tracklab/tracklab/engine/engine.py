@@ -7,6 +7,10 @@ import torch
 from lightning.fabric import Fabric
 import logging
 import time
+import sys
+# print(sys.path)
+# from create_detection_with_jersey import add_jersey_numbers_to_csv
+
 
 log = logging.getLogger(__name__)
 
@@ -125,6 +129,18 @@ class TrackingEngine(ABC):
                     index=i,
                 )
                 detections, image_pred = self.video_loop(tracker_state, video_metadata, video_idx)
+
+                # detection_df = pd.DataFrame(detections)
+
+                # tracklet_df = pd.read_csv(output_csv_path)
+                # merged_df = pd.merge(detection_df, tracklet_df[['track_id', 'jn_tracklet']], on='track_id', how='left')
+                # merged_df['jersey_number_detection'] = merged_df['jn_tracklet']
+                # merged_df['jersey_number'] = merged_df['jn_tracklet']
+
+                # merged_df['jersey_number_confidence'] = 1.0
+                # detections = merged_df.drop(columns=['jn_tracklet'])  # if you don't need jn_tracklet anymore
+
+                # print(detection_df.head())
                 self.callback(
                     "on_video_loop_end",
                     video_metadata=video_metadata,
@@ -132,6 +148,10 @@ class TrackingEngine(ABC):
                     detections=detections,
                     image_pred=image_pred,
                 )
+                df = pd.DataFrame(detections)
+                csv_filename = '/Users/kai/GSR/soccernet/engine_output.csv'
+                df.to_csv(csv_filename, index=False)
+                log.info(f"Engine call back")
             video_count += 1
 
         self.callback("on_dataset_track_end")

@@ -118,7 +118,7 @@ class BPBReIDStrongSORT(ImageLevelModule):
             batch["frame"][0],
             batch["keypoints"][0] if "keypoints" in batch else None,
         )
-        # log.info(f"Detection in strongsort: {results}")
+        # detections.to_csv("/Users/kai/GSR/soccernet/detection.csv")
 
         # Ensure required columns are present
         required_columns = ['track_bbox_kf_ltwh', 'track_id']
@@ -131,7 +131,7 @@ class BPBReIDStrongSORT(ImageLevelModule):
             for j, track2 in results.iterrows():
                 if i >= j:
                     continue
-
+                        
                 iou = GlobalBboxStore.calculate_iou(track1['track_bbox_kf_ltwh'], track2['track_bbox_kf_ltwh'])
                 # log.info(f"iou: {iou},  threshold: {self.cfg.cross_threshold}")
                 if iou > self.cfg.cross_threshold:
@@ -154,4 +154,5 @@ class BPBReIDStrongSORT(ImageLevelModule):
             detections.index
         ), "Mismatch of indexes during the tracking. The results should match the detections."
         
+        # results = []
         return results

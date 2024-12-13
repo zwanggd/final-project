@@ -128,10 +128,19 @@ class PitchVisualizationEngine(Callback):
                 else:
                     progress = None
 
-                log.info(f"on video loop ends: {detections}")
+                # Open a file in write mode
+
+                df = pd.DataFrame(image_pred)
+                log.info(f"on video loop ends, detection: {detections}")
+                detections.to_csv("/Users/kai/GSR/soccernet/debug3.csv")
+
                 self.run(engine.tracker_state, video_idx, detections, image_pred, video_metadata, progress=progress)
 
     def run(self, tracker_state: TrackerState, video_id, detections, image_preds, video_metadata, progress=None):
+        # log.info(f"Video writer called")
+        # detection_df = pd.DataFrame(detections)
+        # detection_df.to_csv("/Users/kai/GSR/soccernet/run_video_output.csv")
+        # detections
         image_metadatas = tracker_state.image_metadatas[
             tracker_state.image_metadatas.video_id == video_id
             ]
@@ -156,6 +165,8 @@ class PitchVisualizationEngine(Callback):
             image_preds,
             nframes,
         ) for image_id in islice(image_metadatas.index, vis_frames)]
+        # detection_df = pd.DataFrame(detections)
+        # detection_df.to_csv("/Users/kai/GSR/soccernet/run_video_output.csv")
         if self.cfg.save_videos:
             image = cv2_load_image(image_metadatas.iloc[0].file_path)
             filepath = self.save_dir / "videos" / f"{video_name}.mp4"
@@ -166,8 +177,13 @@ class PitchVisualizationEngine(Callback):
                 float(self.cfg.video_fps),
                 (image.shape[1], image.shape[0]),
             )
+        log.info(f"after writer called {args}")
+        
         with Pool(self.cfg.num_workers) as p:
+            log.info("Worker called")
             for patch, file_name in p.imap(process_frame, args):
+                log.info("imap called")
+
                 if self.cfg.save_images:
                     filepath = (
                             self.save_dir
@@ -195,6 +211,7 @@ class PitchVisualizationEngine(Callback):
             patch = image
         else:
             patch = cv2_load_image(image_metadata.file_path)
+        log.info("Draw Frame called")
 
         # print count of frame
         print_count_frame(patch, image_metadata.frame, nframes)
@@ -221,7 +238,7 @@ class PitchVisualizationEngine(Callback):
 
     def _draw_detection(self, patch, detection, is_prediction):
         is_matched = pd.notna(detection.track_id)
-
+        log.info("Draw detection called")
         if not is_matched and not self.cfg.prediction.draw_unmatched:
             return
 
@@ -570,12 +587,20 @@ class PitchVisualizationEngine(Callback):
 
 def create_draw_args(image_id, instance, image_metadatas, detections, tracker_state,
                      image_gts, image_preds, nframes):
+
     image_metadata = image_metadatas.loc[image_id]
     image_gt = image_gts.loc[image_id]
     image_pred = image_preds.loc[image_id]
+
+    log.info(f"create_draw_args detections: {detections.image_id}")
+    log.info(f"create_draw_args image_meta: {image_metadata.name}")
+
     detections_pred = detections[
         detections.image_id == image_metadata.name
         ]
+    log.info(f"create_draw_args detections_pred: {detections_pred}")
+    r = pd.DataFrame(detections_pred)
+    r.to_csv("/Users/kai/GSR/soccernet/args.csv")
     if tracker_state.detections_gt is not None:
         ground_truths = tracker_state.detections_gt[
             tracker_state.detections_gt.image_id == image_metadata.name
@@ -588,5 +613,6 @@ def create_draw_args(image_id, instance, image_metadatas, detections, tracker_st
 
 def process_frame(args):
     instance, image_metadata, detections_pred, ground_truths, image_pred, image_gt, nframes = args
+    log.info("Process frame: {detections_pred}")
     frame = instance.draw_frame(image_metadata, detections_pred, ground_truths, image_pred, image_gt, nframes)
     return frame, Path(image_metadata.file_path).name

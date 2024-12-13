@@ -46,6 +46,6 @@ class TrackletTeamSideLabeling(VideoLevelModule):
         gk_team = goalkeepers.bbox_pitch.apply(lambda bbox: "right" if (bbox["x_bottom_middle"] > 0) else "left")
         detections.loc[goalkeepers.index, "team"] = gk_team
 
-        detections['debug'] = True
+        # detections['debug'] = True
         log.info(f'team side label called')
         return detections

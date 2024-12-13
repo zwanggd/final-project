@@ -21,12 +21,13 @@ defaults:
   - modules/pitch : nbjw_calib
   - modules/calibration: nbjw_calib
   - _self_
-
+# /Users/kai/GSR/soccernet/None/eval/pred
+# /Users/kai/GSR/soccernet/None/eval/pred/SoccerNetGameState-valid/tracklab
 # Pipeline definition :
 # - Defines the order in which the modules will be called
 # - If loading a tracking state from disk, remove modules whose outputs are already provided in the loaded state
 # Use 'pipeline: []' for an empty pipeline (e.g. when loading all tracking results from a saved .pklz tracker state)
-pipeline:
+pipeline: 
   - bbox_detector
   - reid
   - track
@@ -44,7 +45,7 @@ experiment_name: "sn-gamestate"
 # Path definitions
 home_dir: "${oc.env:HOME}"
 # switch point
-data_dir: "/Users/kai/GSR/data/"
+data_dir: "/Users/kai/GSR/data"
 # data_dir: "/vast/zw4603/data/"
 model_dir: "${project_dir}/pretrained_models"
 
@@ -65,13 +66,13 @@ modules: # Allows module-specific batch_size and other configuration
 # Flags
 test_tracking: True
 eval_tracking: True
-print_config: False
+print_config: True
 
 # Dataset
 dataset:
   nvid: 1  # For a quick first inference, only the first video is processed. Use "-1" to process all the videos.
-  nframes: 100 # For testing on only a few frames, set to a positive number. Will disable evaluation !
-  eval_set: "train"  # Tracking is performed on the SoccerNet validation set. Choose from {"train", "valid", "test", "challenge"}.
+  nframes: 20 # For testing on only a few frames, set to a positive number. Will disable evaluation !
+  eval_set: "valid"  # Tracking is performed on the SoccerNet validation set. Choose from {"train", "valid", "test", "challenge"}.
   dataset_path: ${data_dir}/SoccerNetGS  # The SoccerNet game state dataset is located under the data path (defined above) in the 'SoccerNetGS' folder
   vids_dict: # Use one key per split (valid, test, etc)
     # valid: []  # Specify explicitly which video to apply tracking on, e.g. ['SNGS-04', 'SNGS-51'] . Ignored when left empty.
@@ -86,6 +87,7 @@ state:
   # save_file: null
   load_file: null  # 'null' to disable loading. Load a file that was saved with the 'state.save_file' option above. Don't forget to remove from the pipeline all modules that should not be run again, but loaded from the saved tracker state.
   # load_file: "/vast/zw4603/outputs/states/${experiment_name}.pklz"  # 加载保存的 tracker 状态
+  # load_file: "/Users/kai/GSR/outputs/states/${experiment_name}.pklz"  # 'null' to disable saving. This is the save path for the tracker_state object that contains all modules outputs (bboxes, reid embeddings, jersey numbers, roles, teams, etc)
 
 # Visualization
 visualization:

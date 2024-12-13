@@ -27,12 +27,25 @@ class TrackletTeamClustering(VideoLevelModule):
 
         player_detections = detections[detections.role == "player"]
 
-        # Compute mean embeddings for each track_id
         embeddings_list = []
+        player_detections.to_csv("/Users/kai/GSR/soccernet/debug2.csv")
         for track_id, group in player_detections.groupby("track_id"):
             if np.isnan(track_id):
                 continue
+            # numeric_embeddings = [np.array(emb, dtype=np.float32) for emb in group.embeddings.values]
+            # embeddings = np.mean(np.vstack(numeric_embeddings), axis=0)
+            # log.info(f"group: {print(group.embeddings.values)}")
+
             embeddings = np.mean(np.vstack(group.embeddings.values), axis=0)
+            # valid_embeddings = [e for e in group.embeddings.values if isinstance(e, np.ndarray) and e.size > 0 and np.issubdtype(e.dtype, np.number)]
+            # if valid_embeddings:
+            #     embeddings_array = np.vstack(valid_embeddings)
+            #     embeddings = np.mean(embeddings_array, axis=0)
+            # else:
+            #     # Dynamically determine the embedding size
+            #     desired_embedding_size = valid_embeddings[0].shape[0] if valid_embeddings else 128  # Default to 128 if no embeddings exist
+            #     embeddings = np.zeros((desired_embedding_size,))
+
             embeddings_list.append({'track_id': track_id, 'embeddings': embeddings})
 
         if not embeddings_list:  # Check if embeddings_list is empty
