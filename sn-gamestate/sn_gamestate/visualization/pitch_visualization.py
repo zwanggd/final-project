@@ -130,9 +130,9 @@ class PitchVisualizationEngine(Callback):
 
                 # Open a file in write mode
 
-                df = pd.DataFrame(image_pred)
-                log.info(f"on video loop ends, detection: {detections}")
-                detections.to_csv("/Users/kai/GSR/soccernet/debug3.csv")
+                # df = pd.DataFrame(image_pred)
+                # log.info(f"on video loop ends, detection: {detections}")
+                # detections.to_csv("/Users/kai/GSR/soccernet/debug3.csv")
 
                 self.run(engine.tracker_state, video_idx, detections, image_pred, video_metadata, progress=progress)
 
@@ -177,7 +177,7 @@ class PitchVisualizationEngine(Callback):
                 float(self.cfg.video_fps),
                 (image.shape[1], image.shape[0]),
             )
-        log.info(f"after writer called {args}")
+        # log.info(f"after writer called {args}")
         
         with Pool(self.cfg.num_workers) as p:
             log.info("Worker called")
@@ -211,7 +211,7 @@ class PitchVisualizationEngine(Callback):
             patch = image
         else:
             patch = cv2_load_image(image_metadata.file_path)
-        log.info("Draw Frame called")
+        # log.info("Draw Frame called")
 
         # print count of frame
         print_count_frame(patch, image_metadata.frame, nframes)
@@ -238,7 +238,7 @@ class PitchVisualizationEngine(Callback):
 
     def _draw_detection(self, patch, detection, is_prediction):
         is_matched = pd.notna(detection.track_id)
-        log.info("Draw detection called")
+        # log.info("Draw detection called")
         if not is_matched and not self.cfg.prediction.draw_unmatched:
             return
 
@@ -592,15 +592,15 @@ def create_draw_args(image_id, instance, image_metadatas, detections, tracker_st
     image_gt = image_gts.loc[image_id]
     image_pred = image_preds.loc[image_id]
 
-    log.info(f"create_draw_args detections: {detections.image_id}")
-    log.info(f"create_draw_args image_meta: {image_metadata.name}")
+    # log.info(f"create_draw_args detections: {detections.image_id}")
+    # log.info(f"create_draw_args image_meta: {image_metadata.name}")
 
     detections_pred = detections[
         detections.image_id == image_metadata.name
         ]
-    log.info(f"create_draw_args detections_pred: {detections_pred}")
-    r = pd.DataFrame(detections_pred)
-    r.to_csv("/Users/kai/GSR/soccernet/args.csv")
+    # log.info(f"create_draw_args detections_pred: {detections_pred}")
+    # r = pd.DataFrame(detections_pred)
+    # r.to_csv("/Users/kai/GSR/soccernet/args.csv")
     if tracker_state.detections_gt is not None:
         ground_truths = tracker_state.detections_gt[
             tracker_state.detections_gt.image_id == image_metadata.name
@@ -613,6 +613,6 @@ def create_draw_args(image_id, instance, image_metadatas, detections, tracker_st
 
 def process_frame(args):
     instance, image_metadata, detections_pred, ground_truths, image_pred, image_gt, nframes = args
-    log.info("Process frame: {detections_pred}")
+    # log.info("Process frame: {detections_pred}")
     frame = instance.draw_frame(image_metadata, detections_pred, ground_truths, image_pred, image_gt, nframes)
     return frame, Path(image_metadata.file_path).name

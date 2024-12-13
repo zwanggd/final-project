@@ -32,7 +32,7 @@ class SoccerNetGameState(TrackingDataset):
 
         sets = {}
         # for split in ["train", "valid", "test", "challenge", "testing_clips"]:
-        for split in ["train", "valid", "test", "challenge"]:
+        for split in ["train", "valid", "test", "challenge","testing_clips"]:
 
             if os.path.exists(self.dataset_path / split):
                 sets[split] = load_set(self.dataset_path / split, nvid, vids_dict.get(split, []))
@@ -210,8 +210,8 @@ def video_dir_to_dfs(args):
     dataset_path = args['dataset_path']
     video_folder = args['video_folder']
     split = args['split']
-    # split_id = ["train", "valid", "test", "challenge", "testing_clips"].index(split) + 1
-    split_id = ["train", "valid", "test", "challenge"].index(split) + 1
+    split_id = ["train", "valid", "test", "challenge", "testing_clips"].index(split) + 1
+    # split_id = ["train", "valid", "test", "challenge"].index(split) + 1
 
     annotation_pitch_camera_df = None
     detections_df = None

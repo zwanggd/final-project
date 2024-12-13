@@ -67,7 +67,7 @@ def extract_player_images(image_path, frame_annotations, tracklet_output_path, t
     return saved_files
 
 
-def convert_dataset(NBJW_Calib_detection_cleaned, base_dir, output_dir, split='valid', sequence='SNGS-021'):
+def convert_dataset(NBJW_Calib_detection_cleaned, base_dir, output_dir, split='testing_clips', sequence='SNGS-000'):
     # Directories for validation set
     img1_path = os.path.join(base_dir, split, sequence, 'img1')
     split_output_path = os.path.join(output_dir, split, sequence)

@@ -28,7 +28,7 @@ class TrackletTeamClustering(VideoLevelModule):
         player_detections = detections[detections.role == "player"]
 
         embeddings_list = []
-        player_detections.to_csv("/Users/kai/GSR/soccernet/debug2.csv")
+        # player_detections.to_csv("/Users/kai/GSR/soccernet/debug2.csv")
         for track_id, group in player_detections.groupby("track_id"):
             if np.isnan(track_id):
                 continue
@@ -66,5 +66,5 @@ class TrackletTeamClustering(VideoLevelModule):
         detections = detections.merge(embedding_tracklet[['track_id', 'team_cluster']], on='track_id', how='left', sort=False)
 
         # detections = []
-        log.info(f'tracklet team called')
+        # log.info(f'tracklet team called')
         return detections

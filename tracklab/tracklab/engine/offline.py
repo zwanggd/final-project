@@ -12,14 +12,14 @@ import pandas as pd
 import numpy as np
 
 # bbox_csv_path = '/Users/kai/GSR/soccernet/model_detections/BPBReIDStrongSORT_detection.csv'
-bbox_csv_path = '/Users/kai/GSR/soccernet/model_detections/NBJW_Calib_detection.csv'
-role_csv_path = '/Users/kai/GSR/soccernet/model_detections/PRTReId_detection.csv'
-cleaned_csv_path = '/Users/kai/GSR/soccernet/model_detections/NBJW_Calib_detection_cleaned.csv'
+# bbox_csv_path = '/Users/kai/GSR/soccernet/model_detections/NBJW_Calib_detection.csv'
+# role_csv_path = '/Users/kai/GSR/soccernet/model_detections/PRTReId_detection.csv'
+# cleaned_csv_path = '/Users/kai/GSR/soccernet/model_detections/NBJW_Calib_detection_cleaned.csv'
 base_dir = '/Users/kai/GSR/data/SoccerNetGS'
 output_dir = '/Users/kai/GSR/data/SoccerNetGS/converted'
 
 jersey_number_json_path = '/Users/kai/GSR/soccernet/jersey-number-pipeline/out/SoccerNetResults/challenge_final_results.json'
-output_csv_path = '/Users/kai/GSR/soccernet/model_detections/NBJW_Calib_detection_cleaned_with_jersey.csv'
+# output_csv_path = '/Users/kai/GSR/soccernet/model_detections/NBJW_Calib_detection_cleaned_with_jersey.csv'
 
 
 class OfflineTrackingEngine(TrackingEngine):
@@ -40,8 +40,7 @@ class OfflineTrackingEngine(TrackingEngine):
         NBJW_Calib_detection_cleaned_with_jersey = []
 
         for model_name in model_names:
-            log.info(f"model: {model_name}, detection: {detections}")\
-                
+            # log.info(f"model: {model_name}, detection: {detections}")
             if(model_name == "MMOCR"):
                 log.info("Skipping MMOCR")
                 # NBJW_Calib_detection_cleaned = clean_detection_csv(NBJW_Calib_detection, PRTReId_detection)
