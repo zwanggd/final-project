@@ -11,6 +11,7 @@ log = logging.getLogger(__name__)
 import pandas as pd
 import numpy as np
 
+from tracklab.wrappers.reid.cross_level_reassignment import CrossLevelReassignment
 # bbox_csv_path = '/Users/kai/GSR/soccernet/model_detections/BPBReIDStrongSORT_detection.csv'
 # bbox_csv_path = '/Users/kai/GSR/soccernet/model_detections/NBJW_Calib_detection.csv'
 # role_csv_path = '/Users/kai/GSR/soccernet/model_detections/PRTReId_detection.csv'
@@ -76,7 +77,9 @@ class OfflineTrackingEngine(TrackingEngine):
             if(model_name == "NBJW_Calib"):
                 NBJW_Calib_detection = detections
             if(model_name == "PRTReId"):
-                PRTReId_detection = detections
+                cross_reassigner = CrossLevelReassignment(iou_threshold=0.5, cosine_similarity_threshold=0.7)
+                detections = cross_reassigner
+                # PRTReId_detection = detections
             # if 'embeddings' in detections.columns:
             #     d = detections
             #     d['embeddings'] = d['embeddings'].apply(lambda x: np.array2string(x, separator=','))

@@ -13,7 +13,7 @@ defaults:
   - visualization: gamestate  # Save tracking results as a .mp4 video in the run directory specified below (sn-gamestate/outputs/...)
   - modules/bbox_detector: yolov8
   - modules/reid: prtreid
-  - modules/track: bpbreid_strong_sort
+  - modules/track: strong_sort
   - modules/jersey_number_detect: mmocr
   - modules/team: kmeans_embeddings
   - modules/team_side: mean_position
@@ -71,7 +71,7 @@ print_config: True
 # Dataset
 dataset:
   nvid: 1  # For a quick first inference, only the first video is processed. Use "-1" to process all the videos.
-  nframes: 10 # For testing on only a few frames, set to a positive number. Will disable evaluation !
+  nframes: 1 # For testing on only a few frames, set to a positive number. Will disable evaluation !
   eval_set: "testing_clips"  # Tracking is performed on the SoccerNet validation set. Choose from {"train", "valid", "test", "challenge"}.
   dataset_path: ${data_dir}/SoccerNetGS  # The SoccerNet game state dataset is located under the data path (defined above) in the 'SoccerNetGS' folder
   vids_dict: # Use one key per split (valid, test, etc)

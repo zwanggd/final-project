@@ -127,27 +127,27 @@ class BPBReIDStrongSORT(ImageLevelModule):
             raise ValueError(f"Missing required columns in results DataFrame: {missing_columns}")
 
         # Handle crossing tracks
-        for i, track1 in results.iterrows():
-            for j, track2 in results.iterrows():
-                if i >= j:
-                    continue
+        # for i, track1 in results.iterrows():
+        #     for j, track2 in results.iterrows():
+        #         if i >= j:
+        #             continue
                         
-                iou = GlobalBboxStore.calculate_iou(track1['track_bbox_kf_ltwh'], track2['track_bbox_kf_ltwh'])
-                # log.info(f"iou: {iou},  threshold: {self.cfg.cross_threshold}")
-                if iou > self.cfg.cross_threshold:
-                    log.info(f"Tracks {track1['track_id']} and {track2['track_id']} are crossing.")
-                    result = GlobalBboxStore.handle_crossing_tracks(
-                        track1['track_id'], track2['track_id'], track1['track_bbox_kf_ltwh'], track2['track_bbox_kf_ltwh'], iou
-                    )
-                    if(result == 0):
-                        continue
-                    else:
-                        existing_track, other_track, replace_track = result
-                        results.loc[results['track_id'] == replace_track, 'track_id'] = other_track
-                else:
-                    GlobalBboxStore.recover_tracks_if_separated(
-                        track1['track_id'], track2['track_id'], track1['track_bbox_kf_ltwh'], track2['track_bbox_kf_ltwh'], iou
-                    )
+        #         iou = GlobalBboxStore.calculate_iou(track1['track_bbox_kf_ltwh'], track2['track_bbox_kf_ltwh'])
+        #         # log.info(f"iou: {iou},  threshold: {self.cfg.cross_threshold}")
+        #         if iou > self.cfg.cross_threshold:
+        #             log.info(f"Tracks {track1['track_id']} and {track2['track_id']} are crossing.")
+        #             result = GlobalBboxStore.handle_crossing_tracks(
+        #                 track1['track_id'], track2['track_id'], track1['track_bbox_kf_ltwh'], track2['track_bbox_kf_ltwh'], iou
+        #             )
+        #             if(result == 0):
+        #                 continue
+        #             else:
+        #                 existing_track, other_track, replace_track = result
+        #                 results.loc[results['track_id'] == replace_track, 'track_id'] = other_track
+        #         else:
+        #             GlobalBboxStore.recover_tracks_if_separated(
+        #                 track1['track_id'], track2['track_id'], track1['track_bbox_kf_ltwh'], track2['track_bbox_kf_ltwh'], iou
+        #             )
 
         # Ensure results indexes match detection indexes
         assert set(results.index).issubset(

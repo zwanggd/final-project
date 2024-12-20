@@ -182,7 +182,7 @@ class PitchVisualizationEngine(Callback):
         with Pool(self.cfg.num_workers) as p:
             log.info("Worker called")
             for patch, file_name in p.imap(process_frame, args):
-                log.info("imap called")
+                # log.info("imap called")
 
                 if self.cfg.save_images:
                     filepath = (
